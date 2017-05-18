@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <title>Twisted Wheel with Jquery</title>
+</head>
+<body>
+
+<div class="circle"></div>
+<button>Spin</button>
+
+<!-- Żeby skorzystać z biblioteki, musimy ją najpierw zaimplementować do naszego projektu i robimy to przy pomocy <script>. Najpierw wchodzimy np. na stronę google  libraries i przekopiowujemy odpowiedni link. Zadziała to tak, że przy ściąganiu do okna przeglądarki naszej strony, ściągnięta też zostanie z servera google biblioteka, którą tu zaimplementowaliśmy. -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Oczywiście możemy też pobrać plik i umieścić go lokalnie np. <script src="jquery.min.js"></script>, ale zastosowaliśmy pierwszy sposób, gdyż wierzymy, że servery google są niezawodne :) i kiedy przeglądarka natknie się na naszej stronie na ten <script>, to sobie go pobierze z servera google. -->
+
+<!-- UWAGA! Nie ma sensu wcześniej, niż zacznie się tego używać w kodzie, implementować jakichkolwiek bibliotek, gdyż wcześniej są one po prostu nie potrzebne -->
+
+<!-- Od momentu zaimplementowania w jakikolwiek sposób do naszego pliku biblioteki jquery, możemy zacząć pisać zgodnie z jej składnią i zostanie to odpowiednio zinterpretowane przez przeglądarkę -->
+
+<!-- UWAGA! Możemy łączyć sobie różne składnie: JS, Jquery i inne, bo to tylko inny sposOb pisania :) -->
+
+<script>
+    $('button').on('click', function(){
+        $('.circle').toggleClass('active');
+    })
+</script>
+    <!--
+    1) przy pomocy $('') wywołujemy element, na który chcemy jakoś wpłynąć - tu: ('button")
+    2) przy pomocy .on('') wywołujemy zdarzenie, które chcemy, aby się zadziało (to takie "nasłuchiwanie") np.:
+    - klik ('click')
+    - mysz na obiekcie ('mouseOver')
+    - zmiana okna przeglądarki ('resize')
+    - wciśnięcie klawisza na klawiaturze ('keyDown')
+    2a) i dalej przy pomocy function() wywołujemy JavaScript'ową funkcję, która coś robi - a co robi?
+    3) znowu wywołujemy w jquery element, na który chcemy wpłynąć - tu:('.circle") czyli div o klasie circle
+    4) do którego chcemy dodać klasę active, czyli toggleClass('active') - po naciśnięciu button'a do .circle zostanie dodana .active
+    -->
+</body>
+</html>

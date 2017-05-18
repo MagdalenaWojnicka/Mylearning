@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.circle {
+    width: 40vh;
+    /* szerokość równa 40% wysokości okna przeglądarki, żeby zawsze to był kwadrat!!! */
+    height: 40vh;
+    /* wysokość równa 40% wysokości okna przeglądarki */
+    background-color: #ffffff;
+    border-radius: 50%;
+    border-bottom: 120px solid red;
+    border-left: 120px solid yellow;
+    border-top: 120px solid blue;
+    border-right: 120px solid green;
+    margin: 0 auto;
+    transition: all 5s ease;
+    /* transition - określa JAK ma się wykonać animacja i podajemy tu 3 parametry:
+    - co ma się zmienić = które elementy mają się zmienić i jak (np. all - jeśli ma zajść kilka zmian jednocześnie lub jeden zadany sposób zmiany - transform: rotate),
+    - ile czasu ma ta zmiana zachodzić = jak długo ma ona trwać,
+    - jak ta zmiana ma wyglądać (np. ease = wolno na początku i na końcu i szybko w środku
+
+    transition piszemy w tym elemencie, który podlega zmianie, zaś tam, gdzie zmianę wywołujemy, czyli tutaj :hover piszemy, do jakiego stanu zmiany dążymy*/
+}
+
+.circle:hover {
+    /* :hover - animacja wywołana najechaniem kursora myszki */
+    transform: rotate(3690deg) scale(0);
+}
+
+    /* UWAGA! Mamy dwa sposoby wprowadzenia zmiany:
+    1) :hover (tutaj przycisk nie jest nam potrzebny, bo najeżdżając na circle wywołamy transition),
+    2) dodanie nowej klasy do elementu
+   Ten drugi wariant jest pokazany w  index2 i style2, w których wprowadzamy klasę active i dla niej przypisujemy wartości tansform */
+

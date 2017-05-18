@@ -1,0 +1,46 @@
+
+    /* UWAGA! Mamy dwa sposoby wprowadzenia zmiany:
+    1) :hover,
+    2) dodanie nowej klasy do elementu
+    To jest ten drugi wariant - index2 i style2 - w których wprowadzamy klasę active i dla niej przypisujemy wartości tansform */
+
+
+.circle {
+    width: 40vh;
+    /* szerokość równa 40% wysokości okna przeglądarki, żeby zawsze to był kwadrat!!! */
+    height: 40vh;
+    /* wysokość równa 40% wysokości okna przeglądarki */
+    background-color: #ffffff;
+    border-radius: 50%;
+    border-bottom: 120px solid red;
+    border-left: 120px solid yellow;
+    border-top: 120px solid blue;
+    border-right: 120px solid green;
+    margin: 0 auto;
+    transition: transform 10s ease, border 3s ease-in-out, background-color 10s ease;
+    /* transition - określa JAK ma się wykonać animacja i podajemy tu 3 parametry:
+    - co ma się zmienić = które elementy mają się zmienić i jak (np. all - jeśli ma zajść kilka zmian jednocześnie lub jeden zadany sposób zmiany - transform: rotate),
+    - ile czasu ma ta zmiana zachodzić = jak długo ma ona trwać,
+    - jak ta zmiana ma wyglądać (np. ease = wolno na początku i na końcu i szybko w środku
+
+    transition piszemy w tym elemencie, który podlega zmianie, zaś tam, gdzie zmianę wywołujemy, czyli tutaj :hover piszemy, do jakiego stanu zmiany dążymy*/
+}
+
+.active {
+    transform: rotate(13690deg);
+    border-bottom-color: #eeff00;
+    border-left-color: lime;
+    border-right-color: #4cefff;
+    border-top-color: #e90001;
+    background-color: black;
+}
+
+button {
+    background-color: brown;
+    color: white;
+    width: 200px;
+    height: 30px;
+    display: block;
+    margin: 20px auto;
+    border: none;
+}
