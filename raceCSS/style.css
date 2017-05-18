@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    height: 100vh;
+    background: url("animation/automobileGreen.png") no-repeat, url("animation/automobileBlue.png") no-repeat, url("animation/tourist.png") no-repeat, url("animation/motor-sports.png") no-repeat, url("animation/excavators.png") no-repeat, url("animation/car.png") no-repeat, url("animation/RoadY.jpg") repeat;
+    background-size: auto 15%, auto 15%, auto 15%, auto 10%, auto 20%, auto 15%, auto 32%;
+    background-position: top 20% left 5%, top 35% left 5%, top 60% left 5%, top 70% left 5%, top 98% left 5%, top 28% left -160%, top 0% left 0%;
+    transition: background-position 5s ease;
+}
+
+div:hover {
+    background-position: top 20% left 85%, top 35% left 95%, top 60% left 45%, top 70% left 75%, top 98% left 20%, top 28% left 280%, top 0 left 500%;
+}
