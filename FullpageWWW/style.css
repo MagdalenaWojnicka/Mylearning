@@ -1,7 +1,8 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: Tahoma, Arial;
+    font-family: Helvetica, Arial;
+    letter-spacing: 1px ;
 }
 
 header {
@@ -62,7 +63,7 @@ button {
     background-color: #279c25;
     border: 3px solid #503698;
     color: seashell;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 button:hover {
