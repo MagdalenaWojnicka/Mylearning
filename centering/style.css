@@ -1,0 +1,228 @@
+/* podstawowa struktura */
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(90deg, grey 50%, darkgrey 0);
+    background-size: 30px 100%;
+}
+
+h1 {
+    position: absolute;
+    top: 20px;
+    font-size: 44px;
+    width: 100%;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+    text-shadow: 1px 1px 3px gray, 0 0 16px black;
+}
+
+section {
+    width: 60vw;
+    background-color: white;
+    margin: 12% auto 15%;
+    border: 2px solid black;
+    box-shadow: 0 0 11px 4px black;
+}
+
+h3 {
+    font-weight: bold;
+    height: 20vh;
+    font-size: 28px;
+    text-align: center;
+    line-height: 20vh;
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 14px;
+    color: white;
+}
+
+section div {
+    background-color: black;
+    height: 60vh;
+}
+
+@media (max-width: 1300px) {
+    h3 {
+        font-size: 18px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 900px) {
+    h3 {
+        font-size: 14px;
+    }
+
+    h1 {
+        display: none;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    img {
+        width: 150px;
+        height: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    h3 {
+        font-size: 12px;
+    }
+
+    p {
+        font-size: 10px;
+    }
+
+    img {
+        width: 80px;
+        height: auto;
+    }
+}
+
+/* koniec podtswowej struktury */
+
+/* ------------------------------- WYŚRODKOWANIE ELEMENTU ------------------------------- */
+
+/* 1 - element liniowy w poziomie */
+
+/* rodzicowi, czyli sekcji o klasie .horizontalyInline1, w której jest nasz div z obrazkiem,  dajemy text-align */
+
+.horizontalyInline1 div {
+    text-align: center;
+}
+
+/* 2 - element blokowy w poziomie */
+
+/* margin auto - to bardzo częsty sposób na wyśrodkowanie całej strony */
+
+.horizontalyBlock2 div img {
+    margin: 0 auto;
+    display: block;
+}
+
+/* jako że obrazek jest elementem liniowym, więc musimy zamienić go na element blokowy   */
+
+/* 2a - element blokowy od razu centrujemy w poziomie */
+
+/* tak często centruje się strony */
+
+.horizontalyBlock2a div div {
+    margin: 0 auto;
+    width: 60%;
+    height: 80%;
+    background-color: yellow;
+}
+
+/* 3 - wyśrodkowanie - tekst */
+
+.textLineHeight3 div p {
+    text-align: center;
+    /* wyśrodkowanie w poziomie */
+    line-height: 60vh;
+    /* wyśrodkowanie w pionie */
+}
+/* jest to prosta sztuczka, ale bardzo często nieskuteczna, bo po pierwsze, trzeba znac wysokosc div'a, w którym znajduje sie tekst,
+ a ponadto przy dłuższym tekście przeniesie go nie wiadomo gdzie, bo taki duży jest line-height */
+
+/* 4 - wyśrodkowanie inline-block - semantyka, której w ogóle nie rozumiem, więc nie będę jej używać */
+
+.InlineBlock4 div {
+    text-align: center;
+}
+
+.Inlineblock4 div:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.Inlineblock4 div img {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* 5 - wyśrodkowanie position absolute i margines minusowy */
+
+.positionAbsolute5 div {
+    position: relative;
+}
+
+.positionAbsolute5 div img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -149px;
+    margin-top: -141px;
+}
+/* jest to dobra sztuczka, ale po pierwsze, trzeba znac dokładną wielkość przesuwanego elementu, żeby nadać
+mu odpowiednie marginy ujemne, a ponadto przy responsywności strony przestanie to też działać,
+gdyż odległości są ustawione na sztywno względem wielkości obrazka, którą to zmieniamy w @media */
+
+/* 6 - wyśrodkowanie position absolute i calc () */
+
+.CenteringCalc6 div {
+    position: relative;
+}
+
+.CenteringCalc6 div img {
+    position: absolute;
+    top: calc(50% - 298px/2);
+    left: calc(50% - 282px/2);
+}
+
+/* jest to dobra sztuczka, ale po pierwsze, trzeba znac dokładną wielkość przesuwanego elementu,
+żeby odpowiednio obliczyć przesunięcia top i left, a ponadto przy responsywności strony przestanie to też działać,
+gdyż odległości są ustawione na sztywno względem wielkości obrazka, którą to zmieniamy w @media */
+
+/* 7 - wyśrodkowanie position absolute i translate () - NAJLEPSZE!!! */
+
+.CenteringTranslate7 div {
+    position: relative;
+}
+
+.CenteringTranslate7 div img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+/* 8 - wyśrodkowanie za pomocą flex - NAJLEPSZE!!! */
+
+/* w tym przypadku wyśrodkowujemy rodzica dla img, czyli kontener-div, w którym umieszczony jest
+element wyśrodkowywany*/
+
+.CenteringFlex8 div {
+    display: flex;
+    align-items: center; /* wyśrodkowuje w pionie */
+    justify-content: center; /* wyśrodkowuje w poziomie */
+}
+
+/* 9 - wyśrodkowanie za pomocą flex jednego elementu - NAJLEPSZE!!! */
+
+/* w tym przypadku wyśrodkowujemy img, czyli sam element, który umieszczony jest
+w kontenerze-div, dla którego to kontenera ustawiamy tylko display-flex */
+
+.CenteringOneElementFlex9 div {
+    display: flex;
+}
+
+.CenteringOneElementFlex9 div img {
+    align-self: center; /* wyśrodkowuje w pionie */
+    margin: 0 auto; /* wyśrodkowuje w poziomie */
+}
