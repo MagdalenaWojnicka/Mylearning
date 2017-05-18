@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Tahoma, Arial;
+}
+
+header {
+    background: url("niebieskieKwiaty.jpg");
+    background-size: cover;
+    /* cover ma tę wadę, że nie widać części zdjęcia, ale to nie jest wada, tylko odwieczne prawa fizyki :)
+    że zachowuje proporcje i wypełnia cały ekran */
+    height: 100vh;
+    /* wysokość jak w oknie przeglądarki */
+    width: 100vw;
+    /* szerokość jak w oknie przeglądarki */
+    display: flex;
+    /* uwaga! header domyślnie jest display: block, a my chcemy, aby jego dzieci,
+    które są bezpośrednio w środku kontenera-header były pozycjonowane za pomocą flexa */
+    align-items: center;
+    /* wycentruj nam */
+    justify-content: center;
+    /* ustaw nam w środku */
+    flex-direction: column;
+    /* ułóż pod sobą od góry w pionie */
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #3dff3c;
+}
+
+h2 {
+    font-size: 26px;
+    color: seashell;
+}
+
+button {
+    position: absolute;
+    /* to pozwala nam wyrwać obiekt z układu strony, dzięki temu obiekt nakładany jest
+    na tę strone zupełnie niezależnie - nie oddziałuje z innymi elementami*/
+    left: 50%;
+    /* dzięki wyśrodkowaniu top:50% i left:50% - górny lewy narożnik przycisku znajduje się dokładnie na środku strony
+     i od tego punktu rysowany jest on w prawo i w dół */
+    bottom: 20%;
+    /* my jednak chcemy umieścić nasz przycisk nieco niżej niż w połowie okna przeglądarki, tak więc ustawiamy bottom:20% */
+    width: 260px;
+    height: 70px;
+    /* musimy okrelić dokładne wymiary przycisku, aby móc tą metodą, którą tu stosujemy (sztuczka z marginesami),
+    wyśrodkować przycisk, czyli jego środek umieścić na środku strony */
+    margin-top: -35px;
+    margin-left: -130px;
+    /* sztuczka z marginesami ujemnymi umożliwia nam dokładne wyśrodkowanie przycisku na stronie */
+    padding: 20px;
+    box-sizing: border-box;
+    /* w button box-sizing jest domylnie ustawione na border-box, więc nie trzeba ustawiać,
+    więc nie trzeba ustawiać, ale w starych przeglądarkach może być inaczej, więc na wszelki wypadek dodajemy */
+    background-color: #279c25;
+    border: 3px solid #503698;
+    color: seashell;
+    font-size: 20px;
+}
+
+button:hover {
+    background-color: #3dff3c;
+    box-shadow: 2px;
+    cursor: pointer;
+}
+
