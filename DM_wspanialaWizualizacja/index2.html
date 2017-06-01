@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<!-- /////////////////////////////  DODATKOWE INFORMACJE NA TEMAT CANVAS ////////////////////////////////////////// -->
+
+<!-- https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Canvas_tutorial/... , a szczegółowe tematy to:
+    1) basic_usage - o podstawowym użyciu elementu canvas,
+    2) drawing_shapes - o rysowaniu kształtów w canvas,
+    3) applying_styles_and_colors - o zmianie kolorów i styli,
+
+-->
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Kolorowa Wizulaizacja</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<script>
+    // Canvas to element HTML, w którym można rysować kształty i wklejać obrazki.
+    // canvas jest przeźroczysta !!!!!!
+    // Metoda "createElement" obiektu "dokument" pozwala stworzyć nowy element.
+    // w tym wypadku powstaje element canvas, który przypisujemy do zmiennej "myCanvas"
+    var myCanvas = document.createElement("canvas");
+    // ustawiamy szerokość i wysokość canvas
+    myCanvas.width = 500;
+    myCanvas.height = 500;
+    // dodajemy canvas do elementu "body"
+    document.body.appendChild(myCanvas);
+
+    // jeśli chcemy coś wyświetlić w elemencie canvas, musimy skorzystać z obiektu "context 2D" (lub WebGL jeśli chcemy rysować elementy 3D
+    var ctx = myCanvas.getContext("2d");
+
+    // ======================================= ZMIANA KOLORU WYPEŁNIENIA I KONTURU ====================================
+
+    // kolor szesnastkowy HEX
+    ctx.fillStyle = "#84e8ee";
+    ctx.fillRect(10,10, 50,50);
+    // kolor rgb
+    ctx.fillStyle = "rgb(231,106,141)";
+    ctx.fillRect(80,10, 50,50);
+    // kolor rgb z przeźroczystością, czyli z kanałem alpha, która ma zakres od 0 do 1
+    ctx.fillStyle = "rgba(255,0,0,0.5)";
+    ctx.fillRect(150,10, 50,50);
+    // nazwy kolorów z CSS
+    ctx.fillStyle = "pink";
+    ctx.fillRect(220,10, 50,50);
+
+    // analogicznie można zmieniać kolor konturu
+    ctx.strokeStyle = "rgb(95,106,247)";
+    ctx.strokeRect(10,80, 50,50);
+
+
+    // ========================================= GLOBALNA PRZEŻROCZYSTOŚĆ =============================================
+
+    // oprócz kolorów z kanałem alpha, można stosować globalną przeźroczystość, która zmieni krycie wszystkich elementów, które zostaną narysowane po zmianie przeźroczystości
+    ctx.globalAlpha = 0.5;
+    ctx.fillStyle = "black";
+    ctx.fillRect(10,150, 50,50);
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = "black";
+    ctx.fillRect(80,150, 50,50);
+
+    // ==================================== STYLE LINII I ICH ŁĄCZENIE W NAROŻNIKACH ==================================
+
+    // style linii są takie same jak w programach Adobe
+    ctx.strokeStyle = "black";
+
+    // szerokość linii - tu trzeba pamiętać, że grubość zawsze odkłada się po połowie do środka i na zewnątrz ścieżki
+    ctx.lineWidth = 10;
+    ctx.strokeRect(10,220, 50,50);
+
+    // łączenie linii ma możliwe trzy ustawienia i odpowiada takiemu samemu działaniu Stroke w programach Adobe:
+    // 1) round - zaokrąglenie,
+    // 2) bevel - ścięcie narożnika,
+    // 3) miter - na ostro
+    // domyślnie łączenie ustawione jest na miter, czyli tak jak w ILustratorze czy InDesign
+    ctx.lineJoin = "round";
+    ctx.strokeRect(80,220, 50,50);
+
+    // w przypadku miter można ograniczyć długość"szpikulca", który powstaje przy ciasnych kątach
+    // jeśli odległość wierzchołka powstałego kąta przekroczy miterłimit, połączenie zostanie wykreślone z opcją bevel (dokładnie tak, jak w programach Adobe)
+
+    // nie przekroczony limit
+    ctx.lineJoin = "miter";
+    ctx.miterLimit = 15;
+    ctx.beginPath();
+    ctx.moveTo(180,160);
+    ctx.lineTo(190,260);
+    ctx.lineTo(200,160);
+    ctx.stroke()
+
+    // przekroczony limit
+    ctx.miterLimit = 9;
+    ctx.beginPath();
+    ctx.moveTo(230,160);
+    ctx.lineTo(240,260);
+    ctx.lineTo(250,160);
+    ctx.stroke()
+
+    // =============================== KONIEC TEMATU KOLOROW WYPELNIEN I STYLOW LINII =================================
+
+</script>
+
+</body>
+</html>
