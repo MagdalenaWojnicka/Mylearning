@@ -1,0 +1,11 @@
+/* the humans responsible & colophon */
+/* humanstxt.org */
+
+/* TEAM */
+Magdalena Wojnicka and co, WOJNICKA JD
+Site: http://www.wojnicka.pl
+Gmail: biuro@wojnicka.pl
+Location: Suchy Dwór, Poland
+
+/* App */
+Standards: HTML5
