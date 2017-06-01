@@ -1,0 +1,148 @@
+<!-- informujemy przeglądarkę, że ma czytać tę stronę jako HTML5; ten tag powinien być zawsze pierwszym elementem na stronie -->
+<!DOCTYPE html>
+<!-- określamy język strony -->
+<html lang="pl">
+<!-- w tagu html muszą pojawić się dwa elementy: <head> i <body> -->
+<!-- <head> to nagłówek strony; to co tu wrzucamy nie jest bezpośrednio wyświetlane w oknie przeglądarki -->
+<head>
+    <!-- określamy typ kodowania znaków, gdyż bez tego znaku wywalą się m.in. polskie znaki -->
+    <meta charset="UTF-8">
+    <!-- Wpisujemy tytuł strony, który pojawi się na zakładce okna przeglądarki -->
+    <title>Wspaniała wizualizacja</title>
+    <!-- w tagu <style> definiujemy zasady CSS -->
+    <style>
+        /* zmieniamy tylko wygląd elementu body */
+        body {
+            /* nie chcemy żadnych marginesów - ani zewnętrznych, ani wewnętrznych */
+            margin: 0;
+            padding: 0;
+            /* nie chcemy żadnych scrollbarów */
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<!-- w obrębie <script> można pisać kod JavaScript -->
+<script>
+    // Canvas to element HTML, w którym można rysować kształty i wklejać obrazki.
+    // canvas jest przeźroczysta !!!!!!
+    // Metoda "createElement" obiektu "dokument" pozwala stworzyć nowy element.
+    // w tym wypadku powstaje element canvas, który przypisujemy do zmiennej "myCanvas"
+    var myCanvas = document.createElement("canvas");
+    // ustawiamy szerokość i wysokość canvas
+    myCanvas.width = 500;
+    myCanvas.height = 500;
+    // dodajemy canvas do elementu "body"
+    document.body.appendChild(myCanvas);
+
+    // jeśli chcemy coś wyświetlić w elemencie canvas, musimy skorzystać z obiektu "context 2D" (lub WebGL jeśli chcemy rysować elementy 3D
+    var ctx = myCanvas.getContext("2d");
+
+    // ============================================== RYSOWANIE PROSTOKĄTÓW ===========================================
+
+    // rysujemy prostokąt wypełniony zgodnie z następującą kolejnością podawanych argumentów (odległość górnego lewego wierzchołka na osi x, odległość górnego lewego wierzchołka na osi y, szerokość prostokąta, wysokość prostokąta)
+    // automatycznie ustawione jest tak, że rysowany prostokąt będzie koloru czarnego
+    // fillRect oznacza fill rectangle, czyli narysuj prostokąt wypełniony
+    ctx.fillRect(30, 30, 100, 100);
+
+    // rysujemy prostokąt tak jakbyśmy rysowali kreską przy pomocy ołówka
+    // strokeRect oznacza stroke rectangle, czyli narysuj prostokąt konturem
+    ctx.strokeRect(140, 30, 50, 50);
+
+    // usuwamy narysowaną zawartość, tak jak gumką zgodnie z podanymi atrybutami
+    // cleareRect oznacza clear rectangle, czyli wymaż prostokąt
+    ctx.clearRect(50, 50, 110, 40);
+
+    // ============================================ RYSOWANIE KSZTAŁTÓW ZŁOŻONYCH =====================================
+
+    // rysowanie linii tak jak piórkiem w Photoshop'ie, czyli wytyczamy rysowany kształt, ale póki nie zaznaczymy sposobu wypełnienia tego wytyczenia, to go nie widać, ale jest on zapamiętany jako ścieżka
+
+    // rozpoczynamy rysowanie ścieżki
+    ctx.beginPath();
+    // przesuwamy piórko bez rysowania niczego
+    ctx.moveTo(30, 140);
+    // rysujemy linię z wcześniej ustawionego punktu do nowego punktu
+    ctx.lineTo(100, 140);
+    // dalej rysujemy kolejne elementy ścieżki
+    ctx.lineTo(100, 200);
+    ctx.lineTo(60, 250);
+    ctx.lineTo(10, 150);
+    // wypełniamy ścieżkę kolorem, co automatycznie łączy pierwszy punkt z ostatnim
+    ctx.fill();
+
+    // jeśli zamiast wypełnienia damy kontur, to ścieżka będzie otwarta, tak jak ją narysowaliśmy
+    // można to zobaczyć, wpisując zamiast ctx.fill()
+    // ctx.stroke()
+
+    // =========================================== RYSOWANIE ŁUKÓW ====================================================
+
+    // funkcja arc() przyjmuje do 6 argumentów, przy czym ostatni jest opcjonalny:
+    // 1 i 2) x i y (pozycja środka łuku, czyli tak naprawdę to okręgu),
+    // 3) promień (tego okręgu, którego fragmentem będzie rysowany łuk),
+    // 4) początkowy kąt,
+    // 5) końcowy kąt,
+    // 6) kierunek (prawda = TRUE - jeśli łuk ma być kreślony w przeciwnym kierunku do wskazówek zegara; fałsz = FALSE lub nic - jeśli zgodnie ze wskazówkami zegara)
+
+    // UWAGA!!! kąty muszą być podane w radianach
+    // aby przeliczyć stopnie na radiany należy posłużyć się wzorem:
+    //
+    // radiany = (Math.PI/180)*stopnie
+    //
+    // Math to wbudowany w JS obiekt, który ma metody i właściwości przydatne do matematycznych działań
+
+    ctx.beginPath();
+
+    // radiany = Math.PI/180*45
+
+    ctx.arc(300, 150, 100, Math.PI/180*45, Math.PI/180*-120, true);
+
+    // ctx.arc(300, 150, 100, Math.PI/180*45, Math.PI/180*-120, false); - dla porównania, jak łuk narysuje się zgodnie ze wskazówkami zegara
+
+    ctx.stroke();
+
+    // ===================================== RYSOWANIE KRZYWYCH BEZIERA ===============================================
+
+    ctx.beginPath();
+    ctx.moveTo(200, 250);
+
+    // funkcja bezierCurveTo() przyjmuje 6 argumentów:
+    // 1) x pierwszego punktu kontrolnego,
+    // 2) y pierwszego punktu kontrolnego,
+    // 3) x drugiego punktu kontrolnego,
+    // 4) y drugiego punktu kontrolnego,
+    // 5) x ostatniego punktu krzywej,
+    // 6) y ostatniego punktu krzywej
+
+    ctx.bezierCurveTo(200,100, 400,400, 400,250);
+    ctx.stroke();
+
+    // =================================== WYCINANIE DZIURY W WYPEŁNIONYCH KSZTAŁTACH =================================
+
+    // najważniejsze do zapamiętania są 3 kwestie:
+    // po pierwsze - oba kształty musimy rysować w przeciwnych kierunkach,
+    // po drugie - oba kształty rysujemy wewnątrz jednej ścieżki ctx.beginPath(),
+    // po trzecie - wypełniamy naszą figurę z dziurą dopiero po zakończeniu rysowania obu kształtów
+
+    ctx.beginPath();
+    // zewnętrzny kształt rysujemy tu zgodnie ze wskazówkami zegara
+    ctx.moveTo(40, 300);
+    ctx.lineTo(300, 280);
+    ctx.lineTo(400, 380);
+    ctx.bezierCurveTo(400,500, 20,300, 60,400);
+    ctx.lineTo(30, 380)
+    ctx.lineTo(40,300);
+
+    // wycinamy teraz dziurę w zewnętrznym kształcie, czyli wewnętrzny kształt rysujemy w przeciwną stronę
+    // wewnętrzny kształt rysujemy więc tu przeciwnie do wskazówek zegara
+    ctx.moveTo(150, 320);
+    ctx.lineTo(200, 370);
+    ctx.lineTo(250, 320);
+    ctx.lineTo(150, 320);
+    ctx.fill()
+
+    // =============================== KONIEC TEMATU KREŚLENIA RÓŻNYCH KSZTAŁTÓW ======================================
+
+</script>
+
+</body>
+</html>
