@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<!-- /////////////////////////////  DODATKOWE INFORMACJE NA TEMAT CANVAS ////////////////////////////////////////// -->
+
+<!-- https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Canvas_tutorial/... , a szczegółowe tematy to:
+    1) basic_usage - o podstawowym użyciu elementu canvas,
+    2) drawing_shapes - o rysowaniu kształtów w canvas,
+    3) applying_styles_and_colors - o zmianie kolorów i styli,
+
+-->
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Gradientowa Wizulaizacja</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<script>
+    var myCanvas = document.createElement("canvas");
+    // ustawiamy szerokość i wysokość canvas
+    myCanvas.width = 600;
+    myCanvas.height = 600;
+    // dodajemy canvas do elementu "body"
+    document.body.appendChild(myCanvas);
+
+    // jeśli chcemy coś wyświetlić w elemencie canvas, musimy skorzystać z obiektu "context 2D" (lub WebGL jeśli chcemy rysować elementy 3D
+    var ctx = myCanvas.getContext("2d");
+
+    // ======================================= GRADIENTY ==============================================================
+
+    /* najpierw trzeba stworzyć gradient (podobnie jak swatch w InDesign);
+     przy rysowaniu liniowych gradientów potrzebna jest linia;
+     dlatego funkcja createLinearGradient przyjmuje 4 argumenty:
+     1) x pierwszego punktu linii,
+     2) y pierwszego punktu linii,
+     3) x drugiego punktu linii,
+     4) y drugiego punktu linii;
+     te wartości są względem całej powierzchni canvas (nie tylko powierzchni rysowanego prostokąta) */
+
+    var myGradient = ctx.createLinearGradient(11,400, 110,320);
+    // następnie określamy kolory i ich położenie na wyznaczonej linii (w skali od 0 do 1)
+    // podając kolor pomiędzy początkiem = 0, a końcem = 1, używamy wartości procentowych, czyli wyrażonych w setnych
+
+    myGradient.addColorStop(0, "#dcf225");
+    myGradient.addColorStop(0.32, "#0ce0ff");
+    myGradient.addColorStop(1, "#ff4992");
+    // na tym etapie ustalamy, że taki gradient będzie stylem wypełniającym
+    ctx.fillStyle = myGradient;
+    // tutaj rysujemy kształt, który będzie wypełniony naszym gradientem
+    ctx.fillRect(10,310, 300,300)
+    
+</script>
+</body>
+</html>
