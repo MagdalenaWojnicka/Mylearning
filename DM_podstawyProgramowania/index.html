@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<!-- /////////////////////////////  DODATKOWE INFORMACJE NA TEMAT ZMIENNYCH ////////////////////////////////////////// -->
+
+<!-- https://developer.mozilla.org/en-US/docs/Web/Guide/Values,_variables,_and_literals -->
+
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Gradientowa Wizulaizacja</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<script>
+    // =============================== ZMIENNE TYPU STRING I NUMBER (INTEGER I FLOAT) =================================
+
+    // słowo kluczowe var a po nim nazwa zmiennej - tak tworzy się zmienną
+
+    var nowaZmienna
+
+     /* zmienne mogą mieć nazwę składającą się ze znaków $ lub _ i dowolnych innych znaków Unicode z kategorii:
+     1) Uppercase letter (Lu),
+     2) Lowercase letter (Ll),
+     3) Titlecase letter (Lt),
+     4) Modifier letter (Lm),
+     5) Other letter (Lo).
+      Jednak najczęściej stosowana w nazewnictwie zmiennych jest konotacjaWielbłądzia
+      */
+
+   // =============================================== STRING = ŁAŃCUCH ZNAKÓW ========================================
+
+    // STRING - to łańcuch znaków
+
+    // znaki łańcucha znaków umieszcza się w pojedynczym, albo podwójnym cudzysłowie
+
+    var name = "Magdalena";
+    var name2 = 'Katarzyna';
+
+    // pojedynczy cudzysłów można zawierać w podwójnym i na odwrót
+
+    var name3 = "ten string składa się z 'dwóch cudzysłowów' "
+
+    // dodawanie łańcuchów znaków to jedyne działanie, które można wywkonać na stringach
+
+    console.log(name);
+    console.log(name, name2);
+    var strings = 'test' + "test2";
+    console.log(strings);
+    strings = strings+" "+name3;
+    console.log(strings);
+    name+=' '+name2;
+    console.log(name);
+
+    // =============================================== NUMBERS: INTEGER I FLOAT ========================================
+
+    // NUMBERS - to liczby
+    var num1 = 12;
+    var num2 = 40.6;
+    var num3 = num1+num2;
+    var num4 = 20*num3;
+    console.log(num4);
+
+    var str = '40'+20;
+    console.log(str);
+    // zamienia string+liczba na string, bo na stringach można wykonywać sumowanie
+
+    var num5 = '40'-20;
+    console.log(num5);
+    // zamienia string-liczba na liczbę-liczbę i wykonuje odejmowanie, bo na stringach nie można wykonywać odejmowania
+
+    var num6 = parseInt(str);
+    console.log(num6);
+    /* parseInt przetwarza = parsuje argument w postaci stringa i zwraca liczbę całkowitą typu integer, o zadanej podstawie;
+       parseInt jest funkcją najwyższego poziomu i nie jest związana z żadnym obiektem;
+
+    typ integer - to liczba całkowita, należąca do przedziału Z = {...,-2, -1, 0, 1, 2, ...}
+    zadana podstawa - to inaczej notacja, w jakiej zapisana jest liczba i mamy takie 3 notacje:
+        1) dziesiętna - oparta na 10; w zapisie nie poprzedza się jej niczym;
+        2) szesnastkowa - oparta na 16, w zapisie należy poprzedzić ją symbolem 0x, przy czym 0 => zero;
+        3) ósemkowa - oparta na 8, w zapisie poprzedzamy ją zerem, czyli symbolem 0;
+    liczby w dowolnej notacji poprzedzamy znakiem (- lub +).
+
+    W przypadku zapisania liczby całkowitej wykraczającej poza zakres typu integer, liczba ta zostanie potraktowana jako typ float;
+    podobnie będzie, gdy rezultat operacji będzie wykraczał poza typ integer - jako wynik zostanie zwrócony typ float
+   */
+
+    var float1 = 123.56;
+    var str2 = "450.45";
+    console.log(float1); // wynik - to jest liczba typu float
+    console.log(str2); // wynik - to jest ciąg znaków
+
+    var float2 = parseFloat(str2);
+    console.log(float2);
+    /* parseFloat przetwarza = parsuje argument w postaci stringa i zwraca liczbę zmiennoprzecinkową (rzeczywistą) typu float;
+     parseFloat jest funkcją najwyższego poziomu i nie jest związana z żadnym obiektem;
+     jeśli pierwszy znak nie może być przekonwertowany do liczby - parseFloat() zwraca NaN;
+     jeśli parseFloat natknie się na znak inny niż (+), (-), liczbę(0-9), kropkę dziesiętną ('.') lub wykładnik potęgi, to zwraca wartość do tego miejsca i ignoruje dany znak oraz wszystkie dalsze znaki;
+     dozwolone są slacje na początki i na końcu łańcucha znaków;
+
+     UWAGA! funkcja parseFloat wymaga, aby punktem dziesiętnym była kropka, a nie przecinek
+     */
+
+    // ===================== W JS DO 1 ZMIENNEJ MOŻNA PRZYPISAĆ RÓŻNE TYPY WARTOŚCI ==================================
+
+    // Do jednej zmiennej można przypisać różne typy wartości
+    num1 = "to jest jakiś string";
+    console.log(num1);
+    num1 = 176.56;
+    console.log(num1);
+
+    // na marginesie - konsola i silnik JS jako kalkulator :)
+
+    console.log((66*5.6)+100+100+40); // to jest obliczenie ilośći zjedzonych kalorii :)
+
+</script>
+
+</body>
+</html>
