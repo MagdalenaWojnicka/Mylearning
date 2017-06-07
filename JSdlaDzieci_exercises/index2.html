@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>BOOLEAN</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<script>
+
+    /* BOOLEAN to wartość logiczna, która jest albo prawdziwa (true), albo fałszywa (false)
+    - do zmiennych możemy przypisać albo jedną, albo drugą z tych wartości;
+    - wartości logicznych można używać przy pytaniach rozstrzygających, czyli takich, na które odpowiadamy tak lub nie;
+    - na takich zmiennych możemy także wykonywać różne operacje/działania z tym, że tu zamiast operatorów arytmetycznych stosowanych przy liczbach, stosować będziemy operatory logiczne
+    - wynikiem operacji wykonywanych na wartościach logicznych będą wartości logiczne :)
+     */
+
+    // && (ampersand-ampersand = ii) ILOCZYN LOGICZNY
+
+    var lat18 = true;
+    var zdanyEgzaminNaPrawoJazdy = true;
+    lat18 && zdanyEgzaminNaPrawoJazdy; // -> true, czyli można prowadzić samochód
+
+    var nieZdanyEgzaminNaPrawoJazdy = false;
+    lat18 && nieZdanyEgzaminNaPrawoJazdy; // -> false, czyli nie można prowadzić samochodu
+
+    // || (or = lub) SUMA LOGICZNA
+
+    var ubranaBluza = true;
+    var ubranaKurtka = false;
+    ubranaBluza || ubranaKurtka; // -> true, czyli można wyjść na dwór w ciepły dzień, gdy ma się ubraną bluzę lub kurtkę
+
+    // ! (not = nie, nieprawda, że) NEGACJA LOGICZNA
+
+    var mamyWeekend = true;
+    var dzisTrzebaIscDoSzkoly = !mamyWeekend; // -> false, czyli skoro mamy weekend, to nie trzeba iść do szkoły
+
+    // operatora ! używamy, aby zmienić false na true albo true na false
+
+
+    //////////////////////////////////////// ŁĄCZENIE OPERATORÓW LOGICZNYCH /////////////////////////////////////////
+
+    /* podobnie jak w działaniach arytmetycznych, tak i w operacjach logicznych obowiązują zasady kolejności wykonywania po sobie różnych operacji i tak:
+     1) najpierw (*) czyli też najpierw (&&)
+     2) potem (+) czyli też (||)
+     3) jeśli chcemy, aby jakieś działanie zostało potraktowane priorytetowo, czyli wykonane jako pierwsze - stosujemy nawiasy ()
+     */
+
+    var jestWeekend = false;
+    var spakowanyPlecak = true;
+    var odrobioneLekcje = true;
+    var sokWPlecaku = false;
+    var wodaWPlecaku = true;
+
+    // mając takie zmienne chcemy ustalić, kiedy jesteś gotowy do szkoły, jakie warunki muszą być spełnione
+    var gotowyDoSzkoly = !jestWeekend && spakowanyPlecak && odrobioneLekcje && (sokWPlecaku || wodaWPlecaku); // -> true
+
+
+    ///////////////////////////// PORÓWNYWANIE LICZB NA PODSTAWIE WARTOŚCI LOGICZNYCH ///////////////////////////////
+
+    // > operator 'większy niż'
+
+    var wzrost = 150;
+    var limitWzrostu = 165;
+    wzrost > limitWzrostu; // -> false
+
+    var wzrostFilipa = 171;
+    wzrostFilipa > limitWzrostu; // -> true
+
+    // >= operator 'większy lub równy niż'
+
+    var wzrostKuby = 165;
+    wzrostKuby >= limitWzrostu; // -> true
+
+    // < operator 'mniejszy niż'
+
+    var wzrostJulka = 115;
+    wzrostJulka < limitWzrostu; // -> true
+
+    // <= operator 'mniejszy lub równy'
+
+    wzrostFilipa <= limitWzrostu; // -> false
+
+    // === operator 'równa się', który zadaje pytanie, czy dwie porównywane wartości są dokładnie takie same
+
+    var tajnaLiczba = 5;
+    var strzalMagdy = 7;
+    strzalMagdy === tajnaLiczba; // -> false
+    var strzalKuby = 3;
+    strzalKuby === tajnaLiczba; // -> false
+    var strzalKarola = 5;
+    strzalKarola === tajnaLiczba; // -> true
+
+    // jeśli użyjemy operatora === do porównania dwóch różnych typów wartości, to zawsze otrzymamy false
+
+    var jakasLiczba = 10;
+    var jakisString = "10";
+    jakasLiczba === jakisString; // -> false
+
+    // == operator 'podwójne równa się', najpierw sprowadza wartości po obu stronach do tego samego typu, a potem je porównuje
+
+    0 == false; // -> true, bo gdy przekształcimy wartość logiczną false na liczbę, to dostaniemy 0;
+                // gdy zaś przekształcimy wartość logiczną true na liczbę, to dostaniemy 1;
+    "false" == false; // -> false, ale nie wiem czemu ...
+
+    ////////////////////////////////////// WARTOŚCI UNDEFIND I NULL //////////////////////////////////////////////
+
+    // undefined to wartość używana przez JS, gdy brakuje jakiejkolwiek wartości, czyli gdy nie została przypisana żadna wartość
+
+    var mojaZmienna;
+    mojaZmienna; // -> undefined
+
+    // null to wartość używana wtedy, gdy chcemy powiedzieć wprost - "To jest puste"
+
+    var mojaPustaZmienna = null;
+    mojaPustaZmienna: // -> null
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
