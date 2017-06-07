@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>ĆWICZENIA</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<script>
+
+    ////////////////////////////////////////////// ILE DNI ŻYJĘ DO DZIŚ ? ///////////////////////////////////////////
+
+var sekundyWMinucie = 60;
+var minutyWGodzinie = 60;
+var sekundyWGodzinie = sekundyWMinucie * minutyWGodzinie;
+var godzinyWDobie = 24;
+var sekundyWDobie = godzinyWDobie * sekundyWGodzinie;
+var dniWRoku = 365;
+var sekundyWRoku = dniWRoku * sekundyWDobie;
+var pelneLataZycia = 42;
+var lataPrzestepne = 11;
+var dniDoKonca2016 = 37;
+var dni010305 = (31*3);
+var dniLutego = 28;
+var dniKwietnia = 30;
+var dniCzerwca = 7;
+var sekundyPelneLataZycia = pelneLataZycia * sekundyWRoku;
+var dodatkoweSekundyLatPrzest = lataPrzestepne * sekundyWDobie;
+var dodatkoweDni = dniDoKonca2016 + dni010305 + dniLutego + dniKwietnia + dniCzerwca;
+var sekundyDodatkoweDni = dodatkoweDni * sekundyWDobie;
+var sekundyZycia = sekundyPelneLataZycia + dodatkoweSekundyLatPrzest + sekundyDodatkoweDni;
+
+    ///////////////////////////////// INKREMENTACJA I DEKREMENTACJA ///////////////////////////////////////////////
+
+/* gdy używamy operatora ++, wartość zmiennej przybitePiatki zwiększa się o 1, a gdy użīwamy operatora --, to zmniejsza się o 1 */
+
+    var przybitePiatki = 0;
+    ++przybitePiatki;
+    --przybitePiatki;
+
+/* gdy operatory ++ lub -- umieścimy za zmienną przybiteZolwiki, to skutek jest taki sam, jak w przykladzie z przybitePiatki, ale interpretator zwraca wartość odpowiadającą stanowi rzeczy przed inkrementacją lub dekrementacją. Jednak, gdy po wykonaniu tych działań zapytamy o wartość zmiennej przybiteZolwiki, to jej wynik będzie adekwatny do wykonanych dzialań */
+
+var przybiteZolwiki = 0;
+    przybiteZolwiki++;
+    przybiteZolwiki++;
+    przybiteZolwiki; // sprawdzamy wynik i wszystko się zgadza :)
+
+    /* można też zmniejszać i zwiększać wartość zmiennej o większe wartości niż 1, a robi się to poprzez operatory += oraz -=. Dzięki tym operatorom możemy np. śledzić wyniki w grze */
+
+    var wynik = 10;
+    wynik += 7; // to jet to samo co wynik = wynik + 7 i tu zwraca 17
+    wynik -=3; // to jest to samo co wynik = wynik - 3 i tu zwraca 14
+
+    var baloniki = 100;
+    baloniki *= 2; // to jest to samo co baloniki = baloniki * 2 i tu zwraca 200
+    baloniki /= 4; // to jest to samo co baloniki = baloniki / 4 i tu zwraca 50
+
+
+    ///////////////////////////////// .length - USTALANIE DŁUGOŚCI ŁAŃCUCHA ZNAKÓW ///////////////////////////////////
+
+    /* właściwość .length można dopisać zarówno do samego łańcucha znaków, jak i do zmiennej zawierającej taki łańcuch */
+
+    "to jest jakiś łańcuch znaków do pomiaru długości".length;
+
+    var java = "Java";
+    java.length;   // zwraca 4
+    var script = "Script";
+    script.length;  // zwraca 6
+    var javascript = java + script;
+    javascript.length;  // zwraca 10
+
+    ////////////////////////////////// POBIERANIE POJEDYNCZEGO ZNAKU ZE STRINGU - [] - /////////////////////////////
+
+    /* aby uzyskać znak z konkretnego miejsca w łańcuchu znaków, używamy nawiasów kwadratowych []
+    w nawiasach tych musimy zapisać, o którą liczbę nam chodzi
+    !!! trzeba pamiętać, że w JS wszystko jest liczone od 0 !!!
+     */
+
+    var mojeImie = "Magdalena";
+    mojeImie[0];  // daje wartość M
+    mojeImie[8];  // daje wartość a
+    mojeImie[9];  // daje wartość undefined
+    mojeImie.length;   // daje wartość 9
+
+
+    // szyfrujemy wiadomość w drugich znakach kilku wartości
+
+    var słowoKodu1 = "are";
+    var słowoKodu2 = "tubas";
+    var słowoKodu3 = "unsafe";
+    var słowoKodu4 = '?!';
+
+    // a następnie rozszyfrowujemy tę wiadomość
+
+    słowoKodu1[1] + słowoKodu2[1] + słowoKodu3[1] + słowoKodu4[1];  // zwraca wartość "run!"
+
+
+    ////////////////////////////// .slice -  PRZYCINANIE ŁAŃCUCHA ZNAKÓW ////////////////////////////////////////////
+
+    /* aby "wyciąć" kawałek łańcucha znaków (albo zmiennej zawierającej string) używamy właściwości .slice(), a w nawiasach podajemy, oddzielone przecinkiem, początkową i końcową pozycję fragmentu, który chcemy mieć wycięty */
+
+    var długiString = "Mój długi string zawierać będzie wiele różnych znaków";
+    długiString.length;  // sprawdzam sobie długość, jakby co :)  -> 53
+    długiString.slice(10, 32);  // wycinam kawałek od 10 do 32 znaku i otrzymuję "string będzie zawierać"
+                                // !!! trzeba podać o jeden więcej znak niż chcemy zobaczyć, bo ostatniego znaku nie zwraca
+
+    długiString.slice(10);  // to zwróci nam wszystko począwszy od znaku 10 do końca stringu
+
+
+    /////////////////////// .toUpperCase i .toLowerCase - ZMIANA WIELKOŚCI LITER W STRINGU //////////////////////////
+
+
+
+
+</script>
+
+</body>
+</html>
