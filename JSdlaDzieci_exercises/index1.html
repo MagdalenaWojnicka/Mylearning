@@ -3,7 +3,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>ĆWICZENIA</title>
+    <title>NUMBER & STRING EXERCISES</title>
     <style>
         body {
             margin: 0;
@@ -17,37 +17,37 @@
 
     ////////////////////////////////////////////// ILE DNI ŻYJĘ DO DZIŚ ? ///////////////////////////////////////////
 
-var sekundyWMinucie = 60;
-var minutyWGodzinie = 60;
-var sekundyWGodzinie = sekundyWMinucie * minutyWGodzinie;
-var godzinyWDobie = 24;
-var sekundyWDobie = godzinyWDobie * sekundyWGodzinie;
-var dniWRoku = 365;
-var sekundyWRoku = dniWRoku * sekundyWDobie;
-var pelneLataZycia = 42;
-var lataPrzestepne = 11;
-var dniDoKonca2016 = 37;
-var dni010305 = (31*3);
-var dniLutego = 28;
-var dniKwietnia = 30;
-var dniCzerwca = 7;
-var sekundyPelneLataZycia = pelneLataZycia * sekundyWRoku;
-var dodatkoweSekundyLatPrzest = lataPrzestepne * sekundyWDobie;
-var dodatkoweDni = dniDoKonca2016 + dni010305 + dniLutego + dniKwietnia + dniCzerwca;
-var sekundyDodatkoweDni = dodatkoweDni * sekundyWDobie;
-var sekundyZycia = sekundyPelneLataZycia + dodatkoweSekundyLatPrzest + sekundyDodatkoweDni;
+    var sekundyWMinucie = 60;
+    var minutyWGodzinie = 60;
+    var sekundyWGodzinie = sekundyWMinucie * minutyWGodzinie;
+    var godzinyWDobie = 24;
+    var sekundyWDobie = godzinyWDobie * sekundyWGodzinie;
+    var dniWRoku = 365;
+    var sekundyWRoku = dniWRoku * sekundyWDobie;
+    var pelneLataZycia = 42;
+    var lataPrzestepne = 11;
+    var dniDoKonca2016 = 37;
+    var dni010305 = (31 * 3);
+    var dniLutego = 28;
+    var dniKwietnia = 30;
+    var dniCzerwca = 7;
+    var sekundyPelneLataZycia = pelneLataZycia * sekundyWRoku;
+    var dodatkoweSekundyLatPrzest = lataPrzestepne * sekundyWDobie;
+    var dodatkoweDni = dniDoKonca2016 + dni010305 + dniLutego + dniKwietnia + dniCzerwca;
+    var sekundyDodatkoweDni = dodatkoweDni * sekundyWDobie;
+    var sekundyZycia = sekundyPelneLataZycia + dodatkoweSekundyLatPrzest + sekundyDodatkoweDni;
 
     ///////////////////////////////// INKREMENTACJA I DEKREMENTACJA ///////////////////////////////////////////////
 
-/* gdy używamy operatora ++, wartość zmiennej przybitePiatki zwiększa się o 1, a gdy użīwamy operatora --, to zmniejsza się o 1 */
+    /* gdy używamy operatora ++, wartość zmiennej przybitePiatki zwiększa się o 1, a gdy użīwamy operatora --, to zmniejsza się o 1 */
 
     var przybitePiatki = 0;
     ++przybitePiatki;
     --przybitePiatki;
 
-/* gdy operatory ++ lub -- umieścimy za zmienną przybiteZolwiki, to skutek jest taki sam, jak w przykladzie z przybitePiatki, ale interpretator zwraca wartość odpowiadającą stanowi rzeczy przed inkrementacją lub dekrementacją. Jednak, gdy po wykonaniu tych działań zapytamy o wartość zmiennej przybiteZolwiki, to jej wynik będzie adekwatny do wykonanych dzialań */
+    /* gdy operatory ++ lub -- umieścimy za zmienną przybiteZolwiki, to skutek jest taki sam, jak w przykladzie z przybitePiatki, ale interpretator zwraca wartość odpowiadającą stanowi rzeczy przed inkrementacją lub dekrementacją. Jednak, gdy po wykonaniu tych działań zapytamy o wartość zmiennej przybiteZolwiki, to jej wynik będzie adekwatny do wykonanych dzialań */
 
-var przybiteZolwiki = 0;
+    var przybiteZolwiki = 0;
     przybiteZolwiki++;
     przybiteZolwiki++;
     przybiteZolwiki; // sprawdzamy wynik i wszystko się zgadza :)
@@ -56,7 +56,7 @@ var przybiteZolwiki = 0;
 
     var wynik = 10;
     wynik += 7; // to jet to samo co wynik = wynik + 7 i tu zwraca 17
-    wynik -=3; // to jest to samo co wynik = wynik - 3 i tu zwraca 14
+    wynik -= 3; // to jest to samo co wynik = wynik - 3 i tu zwraca 14
 
     var baloniki = 100;
     baloniki *= 2; // to jest to samo co baloniki = baloniki * 2 i tu zwraca 200
@@ -79,8 +79,8 @@ var przybiteZolwiki = 0;
     ////////////////////////////////// POBIERANIE POJEDYNCZEGO ZNAKU ZE STRINGU - [] - /////////////////////////////
 
     /* aby uzyskać znak z konkretnego miejsca w łańcuchu znaków, używamy nawiasów kwadratowych []
-    w nawiasach tych musimy zapisać, o którą liczbę nam chodzi
-    !!! trzeba pamiętać, że w JS wszystko jest liczone od 0 !!!
+     w nawiasach tych musimy zapisać, o którą liczbę nam chodzi
+     !!! trzeba pamiętać, że w JS wszystko jest liczone od 0 !!!
      */
 
     var mojeImie = "Magdalena";
@@ -115,6 +115,27 @@ var przybiteZolwiki = 0;
 
 
     /////////////////////// .toUpperCase i .toLowerCase - ZMIANA WIELKOŚCI LITER W STRINGU //////////////////////////
+
+    /* możemy zmieniać wielkości liter zarówno w stringach, jak i w zmiennych zawierających wartości typu string
+     */
+    "heJ koLego co Ty tAm wyPrawiasz !".toUpperCase(); // -> "HEJ KOLEGO CO TY TAM WYPRAWIASZ !"
+    "heJ koLego co Ty tAm wyPrawiasz ?".toLowerCase(); // -> "hej kolego co ty tam wyprawiasz ?"
+
+    // jak zrobić, aby jednak na początku wyrazu była duża litera?
+
+    var jakisTekst = "heJ koLego co Ty tAm wyPrawiasz !?";
+    var tekstMaleLitery = jakisTekst.toLowerCase();
+    var pierwszyZnak = tekstMaleLitery[0];
+    var pierwszyZnakWielkaLitera = pierwszyZnak.toUpperCase();
+    var resztaZnakowMaleLitery = tekstMaleLitery.slice(1);
+    pierwszyZnakWielkaLitera + resztaZnakowMaleLitery; // -> "Hej kolego co ty tam wyprawiasz !?"
+
+    /* można też zrobić to dużo krócej:), ale analiza takiego krótkiego kodu jest bardzo trudna, więc lepiej początkowo używać tej bardziej rozbudowanej formy */
+
+    var glupiTekst = "heJ koLego co Ty tAm wyPrawiasz !?";
+    glupiTekst[0].toUpperCase() + glupiTekst.slice(1).toLowerCase();
+
+    
 
 
 
