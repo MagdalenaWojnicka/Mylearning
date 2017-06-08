@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>ARRAY IN PRACTISE</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<script>
+
+    ///////////////////////////////////////     ZNAJDOWANIE DROGI DO DOMU      ////////////////////////////////////////
+
+    /* Zadanie 1.
+     Po raz pierwszy idziesz odwiedzić koleżankę i obawiasz się, czy znajdziesz drogę powrotną do domu. Wpadasz więc na pomysł, aby po drodze do koleżanki spisywać na liście wszystkie mijane punkty orientacyjne, a w drodze powrotnej odczytywać listę od końca i, minąwszy każdy taki punkt, wykreślać go z listy.
+
+     Pomysł na rozwiązanie.
+     Do wykonania tego zadania użyjemy tablicy, do której, przy pomocy metody .push() będziemy dodawać kolejne punktyOrientacyjne, w drodze do koleżanki, zaś w drodze powrotnej, przy pomocy metody .pop(), będziemy usuwać minięte punktyórientacyjne
+     */
+
+    // tworzymy tablicę zawierającą punktyórientacyjne
+
+    var punktyOrientacyjne = [];
+    punktyOrientacyjne.push("Mój dom");
+    punktyOrientacyjne.push("Parking dla przedszkola");
+    punktyOrientacyjne.push("Przystanek autobusowy przy domu");
+    punktyOrientacyjne.push("Sklep Abo");
+    punktyOrientacyjne.push("Przydrożna kapliczka");
+    punktyOrientacyjne.push("Żużlowa nawierzchnia drogi");
+    punktyOrientacyjne.push("Asfaltowa droga");
+    punktyOrientacyjne.push("Dom koleżanki");
+
+    // wracając od koleżanki do domu, minąwszy każdy punktOrientacyjny, wykreślamy go z naszej listy zaczynając od końca
+
+    punktyOrientacyjne.pop(); // -> zwraca: "Dom koleżanki"
+    punktyOrientacyjne.pop(); // -> zwraca: "Asfaltowa droga"
+    punktyOrientacyjne.pop(); // -> zwraca: "Żużlowa nawierzchnia drogi"
+    punktyOrientacyjne.pop(); // -> zwraca: "Przydrożna kapliczka"
+    punktyOrientacyjne.pop(); // -> zwraca: "Sklep Abo"
+    punktyOrientacyjne.pop(); // -> zwraca: "Przystanek autobusowy przy domu"
+    punktyOrientacyjne.pop(); // -> zwraca: "Parking dla przedszkola"
+    punktyOrientacyjne.pop(); // -> zwraca: "Mój dom"
+</script>
+
+</body>
+</html>
