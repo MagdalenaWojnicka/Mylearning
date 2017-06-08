@@ -14,8 +14,227 @@
 </head>
 <body>
 <script>
+    /*
+     [] to oznaczenie tablicy i gdy w środku tych nawiasów nie ma żadnej wartości, to jest to pusta tablica;
+     aby zapełnić tablicę wartościami, wypisujemy je w środku tejże tablicy, czyli nawiasów kwadratowych, oddzielając przecinkami;
+     item = element - tak nazywamy poszczególne wartości w tablicy;
+     elementami mogą być zarówno stringi, jak i liczby;
+     tablicę zapisujemy w zmiennej, tak jak inne wartości, bo jest ona zbiorem wartości;
+     */
+
+    var architekci = ["Tadao Ando", "Zaha Hadid", "Alvar Aalto", "Renzo Piano", "Frank O.Ghery", "Mario Botta", "Antonio Gaudi", "Rem Koolhaas", "Daniel Liebeskind"];
+
+    //    wartości w tablicy możemy wpisywać w jednym ciągu lub w kolumnie (zawsze w nawiasach [] oraz oddzielając poszczególne wartości przecinkami), jeśli jednak wpisujemy je w kolumnie bezpośrednio w konsoli, to musimy używać przycisków Shift+Enter, bo przy samym Enter, silnik JS po prostu wykona wpisaną (niepełną) operację
+
+    var architekciWspolczesni = [
+        "Tadao Ando",
+        "Zaha Hadid",
+        "Renzo Piano",
+        "Frank O. Ghery",
+        "Mario Botta",
+        "Rem Koolhas",
+        "Daniel Liebeskind",
+        "Ieoh Ming Pei",
+        "Tom Wright",
+        "Jean Nouvel",
+        "Moshe Safdie"
+    ];
+
+    ///////////////////////////////////// WYBIERANIE ELEMENTÓW Z TABLICY /////////////////////////////////////////////
+
+    /* aby wybrać jakiś element z tablicy, to w nawiasie [] podajemy index pożądanego elementu;
+     index - to liczba wskazująca komórkę tablicy , w której przechowywana jest wartość;
+     tak jak w przypadku łańcuchów znaków, pierwszy element w tablicy znajduje się pod indexem 0, drugi pod 1 itd.
+     */
+
+    architekciWspolczesni[3]; // -> "Frank O. Ghery"
+    architekci[5]; //-> "Mario Botta"
 
 
+    /////////////////////////////// USTAWIANIE, CZYLI ZMIENIANIE ELEMENTÓW TABLICY //////////////////////////////////
+
+    // do ustawiania, zmieniania, a nawet dodawania elementów do tablicy można użyć indexów
+
+    architekciWspolczesni[7] = "I.M. Pei"; // -> w ten sposób zmieniliśmy wartość 8 elementu tablicy
+
+    // nowe elementy do tablicy możemy dodać za pomocą nawiasów [] z indexami w środku
+
+    architekciWspolczesni[25] = "Magdalena Wojnicka"; // dodajemy nowy element z indexem 25
+    architekciWspolczesni; // wywołujemy całą tablicę i dostajemy poniższą odpowiedź
+
+    // (26) ["Tadao Ando", "Zaha Hadid", "Renzo Piano", "Frank O. Ghery", "Mario Botta", "Rem Koolhas", "Daniel Liebeskind", "Ieoh Ming Pei", "Tom Wright", "Jean Nouvel", "Moshe Safdie", undefined × 14, "Magdalena Wojnicka"]
+
+    ////////////////////////////////////// MIESZANIE TYPÓW DANYCH W TABLICY /////////////////////////////////////////
+
+    /* elementy tablicy nie muszą być tego samego typu, można mieszać elementy typu liczbowego z łańcuchami znaków, a także zagnieżdżać kolejne tablice */
+
+    var ZahaHadid = [
+        1950,
+        "Zaha Hadid",
+        [
+            1979,
+            "the Vitra fire station in Weil am Rhein",
+            "the Cardiff Bay opera house in Wales",
+            "MAXXI -  Italian National Museum of 21st Century Arts in Rome",
+            "the Bridge Pavilion in Zaragoza",
+            "the Rosenthal Centre of Contemporary Art in Cincinnati",
+            "Bergisel Ski Jump in Innsbruck",
+            "Phaeno Science Center in Wolfsburg",
+            "the Riverside Museum in Glasgow",
+            "the Opera House in Guangzhou",
+            "the BMW factory in Leipzig",
+            "the Serpentine Sackler Gallery in Kensington Gardens",
+            "the London aquatics centre for the 2012 Olympic Games",
+            "the Heydar Aliyev centre in Baku",
+            "the stadium for the 2022 football World Cup in Qatar",
+            2016
+        ],
+        65
+    ];
+
+    // aby uzyskać dostęp do konkretnego elementu tablicy wewnetrznej, musimy użyć drugiej pary nawiasów []
+
+    ZahaHadid[2];
+    /*
+     zraca całą tablicę wewnetrzną:
+     (16) [1979, "the Vitra fire station in Weil am Rhein", "the Cardiff Bay opera house in Wales", "MAXXI -  Italian National Museum of 21st Century Arts in Rome", "the Bridge Pavilion in Zaragoza", "the Rosenthal Centre of Contemporary Art in Cincinnati", "Bergisel Ski Jump in Innsbruck", "Phaeno Science Center in Wolfsburg", "the Riverside Museum in Glasgow", "the Opera House in Guangzhou", "the BMW factory in Leipzig", "the Serpentine Sackler Gallery in Kensington Gardens", "the London aquatics centre for the 2012 Olympic Games", "the Heydar Aliyev centre in Baku", "the stadium for the 2022 football World Cup in Qatar", 2016]
+     */
+
+    ZahaHadid[2][0]; // -> zwraca 1979
+    ZahaHadid[2][15]; // -> zwraca 2016
+
+    ////////////////////////////////////////////  PRACA Z TABLICAMI  ////////////////////////////////////////////////
+
+    /* właściwości = ang. properties, mówią nam coś o tablicy;
+     metody = ang. methods, zwykle robią coś, aby zmienić tablicę, albo zwrócić nową tablicę
+     */
+
+    // +++++++++++++++++++++++++++++++ ZNAJDOWANIE DŁUGOŚCI TABLICY ++++++++++++++++++++++++++++++++++++++++
+
+    // właściwość .length tablicy - informuje o liczbie znajdujących się w niej elementów
+
+    ZahaHadid.length; // -> zwraca 4, bo wewnętrzna tablica traktowana jest jako 1 element
+    architekciWspolczesni.length; // -> zwraca 26, ponieważ liczone są też puste pozycje undefined pomiędzy 9 a 25
+    architekci.length; // -> zwraca 9
+
+    /*
+     przy zastosowaniu właściwości .length JS informuje nas o ilości elemaentów tablicy (tym razem nie liczy od 0), więc aby dowiedzieć się, jaki jest ostatni element tablicy, wystarczy zapisać [nazwa†ablicy.length - 1], czyli zamiast indeksu można w nawiasie [] wpisać działanie matematyczne, którego wynikiem będzie zwrócony index
+     */
+
+    architekciWspolczesni[architekciWspolczesni.length - 1]; // -> zwraca "Magdalena Wojnicka" :))
+
+    // +++++++++++++++++++++++++++++  DODAWANIE ELEMENTOW DO TABLICY  ++++++++++++++++++++++++++++++++++++++++
+
+    // .push(element) - wpisujemy po nazwie tablicy tę metodę, a następnie w nawiasie [] element, który chcemy dodać
+
+    var miejscaBerlin = [];
+    miejscaBerlin.push("AquaDom and SEA LIFE-Spandauer Straße 3");
+    miejscaBerlin.push("Science Center Spectrum-Möckernstraße 26");
+    miejscaBerlin.push("Zeiss-Großplanetarium-Prenzlauer Allee 80");
+    miejscaBerlin.push("Humboldt Box-Schlossplatz 5");
+    miejscaBerlin.push("Museum für Naturkunde-Invalidenstraße 43");
+    miejscaBerlin.push("Jewish Museum-Lindenstraße 9-14");
+
+    /* w ten sposób przy pomocy metody .push dodaliśmy do tablicy kolejne elementy;
+     wykonanie metody = wywołanie - ang. calling;
+     gdy wywołujemy metodę .push, to dzieją się dwie rzeczy:
+     - najpierw element w nawiasie zostaje dodany do tablicy,
+     - a następnie zwracana jest nowa długość tablicy, czyli w konsoli pojawia się liczba
+     */
+
+    // .unshift(element) - to metoda, która pozwala dodać jakiś element na początku tablicy
+
+    miejscaBerlin; // -> zwraca nam zawartość tablicy:
+    // (6) ["AquaDom and SEA LIFE-Spandauer Straße 3", "Science Center Spectrum-Möckernstraße 26", "Zeiss-Großplanetarium-Prenzlauer Allee 80", "Humboldt Box-Schlossplatz 5", "Museum für Naturkunde-Invalidenstraße 43", "Jewish Museum-Lindenstraße 9-14"]
+    miejscaBerlin.unshift("Labyrinth Children's Museum-Osloer Straße 12");
+
+
+    /* w ten sposób przy pomocy metody .unshift dodaliśmy do tablicy kolejny element na jej początku;
+     gdy wywołujemy metodę .unshift, to dzieją się dwie rzeczy:
+     - najpierw element w nawiasie zostaje dodany na początku tablicy,
+     - a następnie zwracana jest nowa długość tablicy, czyli w konsoli pojawia się liczba
+     */
+
+    //  ++++++++++++++++++++++++++++++  USUWANIE ELEMENTÓW Z TABLICY  +++++++++++++++++++++++++++++++++++++++
+
+    // .pop(element) - to moteda, która pozwala usunąć ostatni element z tablicy i jednocześnie zwraca ten element jako wartość
+
+    miejscaBerlin; // -> zwraca:
+    // (7) ["Labyrinth Children's Museum-Osloer Straße 12", "AquaDom and SEA LIFE-Spandauer Straße 3", "Science Center Spectrum-Möckernstraße 26", "Zeiss-Großplanetarium-Prenzlauer Allee 80", "Humboldt Box-Schlossplatz 5", "Museum für Naturkunde-Invalidenstraße 43", "Jewish Museum-Lindenstraße 9-14"]
+
+    var ostatnieMiejsce = miejscaBerlin.pop();
+    ostatnieMiejsce; // -> zwraca: "Jewish Museum-Lindenstraße 9-14" i jako że utworzyliśmy zmienną, do której przypisaliśmy wynik zwrotu, tak więc wartość ta została zapisana w tej zmiennej
+
+    miejscaBerlin; // -> zwraca:
+    // (6) ["Labyrinth Children's Museum-Osloer Straße 12", "AquaDom and SEA LIFE-Spandauer Straße 3", "Science Center Spectrum-Möckernstraße 26", "Zeiss-Großplanetarium-Prenzlauer Allee 80", "Humboldt Box-Schlossplatz 5", "Museum für Naturkunde-Invalidenstraße 43"]
+
+    miejscaBerlin.pop(); // -> zwraca: "Museum für Naturkunde-Invalidenstraße 43", ale jako że nie utworzyliśmy zmiennej, w której ten wynik mógłby się zapisać, tak więc ten element zniknie z pamięci naszego silnika JS
+
+    miejscaBerlin; // sprawdzamy, jaki obecnie mamy stan naszej tablicy i:
+    // (5) ["Labyrinth Children's Museum-Osloer Straße 12", "AquaDom and SEA LIFE-Spandauer Straße 3", "Science Center Spectrum-Möckernstraße 26", "Zeiss-Großplanetarium-Prenzlauer Allee 80", "Humboldt Box-Schlossplatz 5"]
+
+    miejscaBerlin.unshift(ostatnieMiejsce); // -> zwraca wynik dodania z przody elementu zapisanego w zmiennej ostatnieMiejsce:
+    // (6) ["Jewish Museum-Lindenstraße 9-14", "Labyrinth Children's Museum-Osloer Straße 12", "AquaDom and SEA LIFE-Spandauer Straße 3", "Science Center Spectrum-Möckernstraße 26", "Zeiss-Großplanetarium-Prenzlauer Allee 80", "Humboldt Box-Schlossplatz 5"]
+
+    // .shift(element) - to metoda odwrotna do unshift, czyli usuwa z tablicy pierwszy element, jednocześnie go zwracając, dzieki czemu możemy zapisać go w zmiennej, żeby go nie stracić :)
+
+
+    // ++++++++++++++++++++++++++++++++++++++++  DODAWANIE TABLIC  ++++++++++++++++++++++++++++++++++++++++++++++
+
+    // pierwszaTablica.concat(drugaTablica) - to metoda umożliwiająca połączenie dwóch tablic, przy czym żadna z oryginalnych tablic nie ulega zmianie
+
+    // concat - to skrót od concatenate = konkatenacja, co oznacza łączenie ze sobą dwóch wartości
+
+    var koloryCieple = ["czerwony", "pomarańczowy", "żółty", "brązowy"];
+    var koloryZimne = ["zielony", "niebieski", "fioletowy", "khaki"];
+    var koloryCiepleIZimne = koloryCieple.concat(koloryZimne);
+    koloryCiepleIZimne; // -> zwraca:
+    // (8) ["czerwony", "pomarańczowy", "żółty", "brązowy", "zielony", "niebieski", "fioletowy", "khaki"]
+    koloryZimne; // -> zwraca:
+    // (4) ["zielony", "niebieski", "fioletowy", "khaki"]
+    koloryCieple; // -> zwraca:
+    // (4) ["czerwony", "pomarańczowy", "żółty", "brązowy"]
+
+    // metody .concat możemy użyć do łączenia więcej niż dwóch tablic, ale wówczas w nawiasach, oddzielając przecinkami, wpisujemy kolejne dołączane tablice
+
+    var koloryNijakie = ["czarny", "szary", "biały"];
+    var wiecejKolorow = koloryNijakie.concat(koloryCieple, koloryZimne); // -> zwraca:
+    // (11) ["czarny", "szary", "biały", "czerwony", "pomarańczowy", "żółty", "brązowy", "zielony", "niebieski", "fioletowy", "khaki"]
+
+    // +++++++++++++++++++++++++++++  ZNAJDOWANIE INDEXU ELEMENTU W TABLICY  ++++++++++++++++++++++++++++++++++++++
+
+    /*
+     .indexOf(element) - to metoda służąca do znalezienia indexu elementu w tablicy;
+     .indexOf(element) zwraca numer, pod jakim szukany element się znajduje
+     i jest odwrotnością używanie nawiasów [] w celu uzyskania wartości znajdującej się pod określonym indexem
+     */
+
+    wiecejKolorow.indexOf("biały"); // -> zwraca 2
+    koloryZimne.indexOf("zielony"); // -> zwraca 0
+    koloryCieple.indexOf("brązowy"); // -> zwraca 3
+    koloryNijakie.indexOf("kremowy"); // -> zwraca -1, co oznacza, że takiego koloru nie ma w tablicy
+
+    // jeśli w tablicy będą występowały dwa takie same elementy w różnych miejscach, to .indexOf zwróci index tylko pierwszego elementu
+
+    // +++++++++++++++++++++++++++  PRZEKSZTAŁCANIE TABLICY W ŁAŃCUCH ZNAKÓW  ++++++++++++++++++++++++++++++++++++
+
+    /*
+     .join() - to metoda umożliwiająca połączenie wszystkich elementów tablicy w jeden długi łańcuch znaków
+     - zastosowawszy tę metodę z pustymi nawiasami (), silnik zwróci nam łańcuch z elementami poodzielanymi przecinkami
+     .join(separator) - kiedy w nawiasach () umiecimy wybrany przez nas separator, to silnik zwróci nam łańcuch z elementami poodzielanymi tymże separatorem
+     - przykładowe separatory: (" - "), (" * "), (" to nie "), (" + "), (" "), ...
+     */
+
+    var elementyBudynku = ["fundamenty", "ściany", "stropy", "dach"];
+    elementyBudynku.join(); // -> zwraca "fundamenty,ściany,stropy,dach"
+    elementyBudynku.join(" - "); // -> zwraca "fundamenty - ściany - stropy - dach"
+    elementyBudynku.join(" i również "); // -> zwraca "fundamenty i również ściany i również stropy i również dach"
+
+    // jeśli wartości w tablicy nie są łańcuchami znaków, to po wywołaniu metody .join JS najpierw przekształci je w pojedyncze stringi, a dopiero później przekształci w jeden wspólny łańcuch znaków
+
+    var wiekDzieci = [13, 11, 6];
+    wiekDzieci.join(" "); // -> zwraca "13 11 6"
+    
 </script>
 
 </body>
