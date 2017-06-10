@@ -24,7 +24,7 @@
      Do wykonania tego zadania użyjemy tablicy, do której, przy pomocy metody .push() będziemy dodawać kolejne punktyOrientacyjne, w drodze do koleżanki, zaś w drodze powrotnej, przy pomocy metody .pop(), będziemy usuwać minięte punktyórientacyjne
      */
 
-    // tworzymy tablicę zawierającą punktyórientacyjne
+    // tworzymy tablicę zawierającą punktyOrientacyjne
 
     var punktyOrientacyjne = [];
     punktyOrientacyjne.push("Mój dom");
@@ -46,6 +46,65 @@
     punktyOrientacyjne.pop(); // -> zwraca: "Przystanek autobusowy przy domu"
     punktyOrientacyjne.pop(); // -> zwraca: "Parking dla przedszkola"
     punktyOrientacyjne.pop(); // -> zwraca: "Mój dom"
+
+    /*  ==============================================================================================================
+
+     UWAGA!
+     W języku komputerowym technika zastosowana do rozwiązania zadania nazywana jest STOS (ang. stack).
+     Można ją porównać do stosu naleśników.
+     Każdy nowo-usmażony naleśnik kładziemy na górę stosu stosując metodę .push().
+     Każdy naleśnik, który bierzemy do zjedzenia bierzemy z wierzchu stosując metodę .pop().
+     Zrzucanie ze stosu, to jak cofanie się w czasie: ostatni element, który zrzucimy, jest zarazem pierwszym, który wrzuciliśmy (tak jak z tymi naleśnikami).
+
+     W żargonie komputerowym nazywa się to również LIFO (Last In, First Out - ostatni na wejściu, pierwszy na wyjściu).
+     Alternatywą dla LIFO jest FIFO (First In, First Out - pierwszy na wejściu, pierwszy na wyjściu), nazywana również kolejką (ang. queue), ponieważ przypomina sklepową kolejkę: pierwsza osoba w kolejce zostanie jako pierwsza obsłużona
+
+     =============================================================================================================== */
+
+
+
+
+    /////////////////////////////////////  PROGRAM DO PODEJMOWANIA DECYZJI  //////////////////////////////////////////
+
+    /* Zadanie 2.
+    Należy napisać program, który, jak magiczna kula, będzie pomagał nam podejmowanie decyzji.
+
+    Krok pośredni do rozwiązania:
+    Musimy nauczyć się generować liczby losowe :)
+    - do wygenerowania losowych liczb wykorzystamy metodę - .Math.random(), która za każdym razem, gdy jest wywoływana zwraca losową liczbę z przedziału pomiędzy 0 i 1;
+    - do zaokrąglenia wylosowanych liczb użyjemy metody - .Math.floor(), która zaokrągli nam podaną liczbę w dół do liczby całkowitej (czyli usunie wszystko, co znajduje się po przecinku)
+     */
+
+    // zaczynamy próbnie losować
+
+    Math.random(); // -> zwraca jakąś liczbę z przedizłu od 0 do 1 - 0.6185488112727755
+Math.random() * 10; // -> zwraca jakąś liczbę z przedziału 1 do 10 - 1.228022559529085 lub 9.758084372376823 itd.
+
+    // indexy tablicy są jednak liczbami całkowitymi, tak więc musimy zaokrąglić nasze wyniki losowania
+
+    Math.floor(1.228022559529085); // -> zwraca 1
+    Math.floor(9.758084372376823); // -> zwraca 9
+
+    // teraz musimy połączyć obie metody tak, aby zadziałały dla konkretnej tablicy, co do której wiemy dokładnie ile ma indexów, z których będziemy losować
+
+    // należy pomnożyć Math.random() razy długość tablicy z losowanymi wynikami, a następnie uzyskaną wartość przesłaś jako argument do metody Math.floor(), aby uzyskać wynik w postaci liczby całkowitej, jaka będzie wskazywała na odpowiedni index w tablicy
+
+    // stwórzmy więc tablicę z losowanymi decyzjami, która zawiera 5 elementów
+
+    var decyzja = [
+        "Brzmi dobrze",
+        "Tak, zdecydowanie powinieneś to zrobić",
+        "Nie jestem w pełni przekonana do tego pomysłu",
+        "Może jednak nie dzisiaj",
+        "Komputer mówi nie"
+    ];
+
+    decyzja[Math.floor(Math.random() * 5)]; // tak powinno być sformułowane nasze wyrażenie losujące decyzję
+
+    // teraz stawiamy przykładowe pytania i losujemy odpowiedzi komputera z naszej tablicy :))
+
+
+
 </script>
 
 </body>
