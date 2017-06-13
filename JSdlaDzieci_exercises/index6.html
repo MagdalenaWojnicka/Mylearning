@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>CONDITIONALS</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<script>
+    /*
+     INSTRUKCJA WARUNKOWA = ang. conditional
+     - oznacza "Jeśli coś jest prawdą, to zrób to. ∆eśli coś jest fałszem, to zrób coś innego";
+
+     PĘTLA = ang. loop
+     - oznacza "Dopóki coś jest prawdą, to nie przestawaj tego robić"
+
+     instrukcje warunkowe i pętle odgrywają kluczową rolę w każdym poważnym przedsięwzięciu programistycznym i są nazywane
+     STRUKTURAMI STERUJĄCYMI = ang. control structure, ponieważ, na podstawie pewnych zdefiniowanych warunków, pozwalaja kontrolować to, kiedy poszczególne części kodu będą wykonywane i jak często
+     */
+
+    /*
+     console.log(wartości, które chcemy wyświetlić) - jest to metoda, która wyświetla, czyli rejestruje, wskazaną wartość w konsoli; metoda ta zaczyna działać, gdy plik HTML wczytamy do przeglądarki - wówczas konsola pokaże nam zawsze wynik tejże metody
+     */
+
+    // ================================  INSTRUKCJE WARUNKOWE  =========================================
+
+    /*
+     if - to instrukcja, która służy do wykonania fragmentu kodu, jeśli jest on prawdą;
+
+     np. jeśli zachowujesz się stosownie do sytuacji, to dostajesz cukierka
+
+     if...else - to instrukcja, która wykonuje jakiś fragment kodu, jeśli coś jest prawdą, a inny, jeśli nie jest
+
+     np. jeśli zachowujesz się stosownie, to dostajesz cukierka, w przeciwnym razie - masz szlaban
+
+     */
+    // +++++++++++++++++++++++++++++++++++  if ()
+
+    var name = "Magdalena";
+    console.log("Cześć " + name);
+    if (name.length > 7) {
+        console.log("Wow, Ty masz NAPRAWDĘ długie imię!");
+    }
+    /* ponieważ imię Magdalena ma 9 znaków, a tym samym spełnia warunek name.length > 7, tak więc treść instrukcji if(name.length > 7) zostaje wykonana i w konsoli pojawia się zawarty w niej komunikat "Wow, Ty masz NAPRAWDĘ długie imię!" */
+
+    name = "Julian";
+    console.log("Cześć " + name);
+    if (name.length > 7) {
+        console.log("Wow, Ty masz NAPRAWDĘ długie imię!");
+    }
+    /* ponieważ imię Julian ma 6 znaków, a tym samym nie spełnia warunku name.length > 7, tak więc treść instrukcji if(name.length > 7) nie zostaje wykonana i w konsoli pojawia się tylko "Cześć Julian" */
+
+    /* instrukcja if składa się z dwóch części:
+     - warunku: if(warunek jest tutaj),
+     - treści = kodu: console.log(treść jest tutaj)
+
+     - warunek = ang. condition jest wartością logiczną,
+     - treść = ang. body to jeden lub więcej wierszy kodu JavaScript, który jest wykonywany, jeśli warunek jest prawdziwy
+
+     - gdy warunek jest fałszywy, to interpretator pomija instrukcję if i po prostu przeskakuje do kolejnego wiersza
+     */
+
+    // ++++++++++++++++++++++++++++++ if () else
+
+    var name = "Magdalena";
+    console.log("Cześć " + name);
+    if (name.length > 7) {
+        console.log("Wow, Ty masz NAPRAWDĘ długie imię!");
+    } else {
+        console.log("Twoje imię nie jest zbyt długie");
+    }
+    /* ponieważ imię Magdalena ma 9 znaków, a tym samym spełnia warunek name.length > 7, tak więc treść instrukcji if(name.length > 7) zostaje wykonana i w konsoli pojawia się komunikat "Wow, Ty masz NAPRAWDĘ długie imię!" */
+
+    name = "Julian";
+    console.log("Cześć " + name);
+    if (name.length > 7) {
+        console.log("Wow, Ty masz NAPRAWDĘ długie imię!");
+    } else {
+        console.log("Twoje imię nie jest zbyt długie");
+    }
+    /* ponieważ imię Julian ma 6 znaków, a tym samym nie spełnia warunku name.length > 7, tak więc treść instrukcji if(name.length > 7) zostaje wykonana w wersji else, gdyż pierwszy warunek nie jest prawdziwy i w konsoli pojawia się komunikat "Twoje imię nie jest zbyt długie" */
+
+
+    // ++++++++++++++++++++++++  SZEREGOWANIE INSTRUKCJI IF...ELSE
+
+   /* if (warunek1) {
+        console.log("Zrób to, jeśli warunek 1 jest prawdziwy");
+    } else if (warunek2) {
+        console.log("Zrób to, jeśli warunek 2 jest prawdziwy");
+    } else if (warunek3) {
+        console.log("Zrób to, jeśli warunek 3 jest prawdziwy");
+    } else {
+        console.log("Zrób to w innym przypadku");
+    }
+
+    Odczytujemy to w ten sposób:
+    1. Jeśli pierwszy warunek jest zgodny z prawdą, wykonaj treść pierwszej instrukcji.
+    2. W przeciwnym razie, jeśli drugi warunek jest zgodny z prawdą, wykonaj treść drugiej instrukcji.
+    3. W przeciwnym razie, jeśli trzeci warunek jest zgodny z prawdą, wykonaj treść trzeciej instrukcji.
+    4. W przeciwnym razie, wykonaj treść instrukcji else.
+
+    Z takim łańcuchem instrukcji if...else zakończonym sekcją else możemy być pewni, że wykonana zostanie jedna i tylko jedna treść. Gdy tylko interpretator napotka prawdziwy warunek, to skojarzona z nim treść zostanie wykonana i żadne inne warunki nie będą już sprawdzane.
+
+    Nie ma przymusu załączania ostatniej instrukcji else ! Jeśli jednak tego nie zrobimy, a żaden z warunków "po drodze" nie będzie prawdziwy, to wówczas żaden kod z łańcucha if...else nie zostanie wykonany.
+     */
+
+    // ++++++++++++++++++++  PRZYKŁAD - zamawiamy obiad w chińskiej knajpce :))
+
+    var kurczakWSosieCytrynowym = false;
+    var wolowinaWSosieZCzarnejFasoli = false;
+    var wieprzowinaWSosieSlodkoKwasnym = true;
+
+    if (kurczakWSosieCytrynowym) {
+        console.log("Świetnie! Biorę kurczaka w sosie cytrynowym!");
+    } else if (wolowinaWSosieZCzarnejFasoli) {
+        console.log("Biorę wołowinę!");
+    } else if (wieprzowinaWSosieSlodkoKwasnym) {
+        console.log("Dobra, niech będzie wieprzowina.");
+    } else {
+        console.log("No cóż trudno, może być tylko ryż z jajkiem.")
+    }
+
+    // +++++++++++++++++++ ZADANIE SAMODZIELNE 1
+
+    /* Polecenie:
+    Napisz program ze zmienną imię.
+    Jeśli wartością tej zmiennej będzie Twoje imię, wyświetlaj "Ave ja!".
+    W przeciwnym razie wyświetlaj "Ave nieznajomy!"
+     */
+
+    var imie = "Magda";
+  //  imie = "Kuba";
+
+    if (imie === "Magda") {
+        console.log("Ave ja!");
+    } else {
+        console.log("Ave nieznajomy!");
+    }
+
+
+    // +++++++++++++++++++ ZADANIE SAMODZIELNE 2
+
+    /* Polecenie:
+     Zmodyfikuj napisany program ze zmienną imię.
+     Jeśli wartością tej zmiennej będzie Twoje imię, wyświetlaj "Ave ja!".
+     Jeśli wartością tej zmiennej będzie imię Mamy, to wyświelaj "Ave Mama!"
+     Jeśli wartością tej zmiennej będzie imię Taty, to wyświetlaj "Ave Tata!"
+     W przeciwnym razie wyświetlaj "Ave nieznajomy!"
+     */
+
+    imie = "Helena";
+    imie = "Andrzej";
+    imie = "Kuba";
+
+    if (imie === "Magda") {
+        console.log("Ave ja!");
+    } else if (imie === "Helena") {
+        console.log("Ave Mama!");
+    } else if (imie === "Andrzej") {
+        console.log("Ave Tata!");
+    } else {
+        console.log("Ave nieznajomy!");
+    }
+
+</script>
+
+</body>
+</html>
