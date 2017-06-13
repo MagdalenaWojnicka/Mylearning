@@ -67,18 +67,18 @@
     /////////////////////////////////////  PROGRAM DO PODEJMOWANIA DECYZJI  //////////////////////////////////////////
 
     /* Zadanie 2.
-    Należy napisać program, który, jak magiczna kula, będzie pomagał nam podejmowanie decyzji.
+     Należy napisać program, który, jak magiczna kula, będzie pomagał nam podejmowanie decyzji.
 
-    Krok pośredni do rozwiązania:
-    Musimy nauczyć się generować liczby losowe :)
-    - do wygenerowania losowych liczb wykorzystamy metodę - .Math.random(), która za każdym razem, gdy jest wywoływana zwraca losową liczbę z przedziału pomiędzy 0 i 1;
-    - do zaokrąglenia wylosowanych liczb użyjemy metody - .Math.floor(), która zaokrągli nam podaną liczbę w dół do liczby całkowitej (czyli usunie wszystko, co znajduje się po przecinku)
+     Krok pośredni do rozwiązania:
+     Musimy nauczyć się generować liczby losowe :)
+     - do wygenerowania losowych liczb wykorzystamy metodę - .Math.random(), która za każdym razem, gdy jest wywoływana zwraca losową liczbę z przedziału pomiędzy 0 i 1;
+     - do zaokrąglenia wylosowanych liczb użyjemy metody - .Math.floor(), która zaokrągli nam podaną liczbę w dół do liczby całkowitej (czyli usunie wszystko, co znajduje się po przecinku)
      */
 
     // zaczynamy próbnie losować
 
     Math.random(); // -> zwraca jakąś liczbę z przedizłu od 0 do 1 - 0.6185488112727755
-Math.random() * 10; // -> zwraca jakąś liczbę z przedziału 1 do 10 - 1.228022559529085 lub 9.758084372376823 itd.
+    Math.random() * 10; // -> zwraca jakąś liczbę z przedziału 1 do 10 - 1.228022559529085 lub 9.758084372376823 itd.
 
     // indexy tablicy są jednak liczbami całkowitymi, tak więc musimy zaokrąglić nasze wyniki losowania
 
@@ -102,7 +102,6 @@ Math.random() * 10; // -> zwraca jakąś liczbę z przedziału 1 do 10 - 1.22802
     decyzja[Math.floor(Math.random() * 5)]; // tak powinno być sformułowane nasze wyrażenie losujące decyzję
 
     // teraz stawiamy przykładowe pytania i losujemy odpowiedzi komputera z naszej tablicy :))
-
 
 
 </script>
