@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>FUNCTIONS</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<script>
+
+    /*
+     +++++++++++++++++++++++++++   PO CO NAM TE FUNKCJE ?  +++++++++++++++++++++++++++++++++++++++++++++++
+
+     - funkcja to sposób na takie wydzielenie fragmentu kodu, aby można go było łatwo wielokrotnie używać;
+     - dzięki funkcjom, ten sam fragment kodu może być używany w wielu miejscach programu;
+     - ukrycie długich fragmentów kodu w funkcji i nadanie im zrozumiałej nazwy ułatwia planowanie, ponieważ można się skupić na organizowaniu funkcji, a nie na szczegółach, które tworzą kod;
+     - rozbicie kodu na funkcje (czyli na mniejsze części) daje szerszą perspektywę i pozwala przemyśleć strukturę programu na wyższym poziomie;
+     - funkcje przydają się szczególnie wtedy, gdy jakieś obliczenie albo działanie musimy wykonać w programie wielokrotnie
+
+     +++++++++++++++++++++++++++++  PODSTAWOWA ANATOMIA FUNKCJI  +++++++++++++++++++++++++++++++++++++++++++
+
+     tak wygląda skrótowy zapis funkcji, czyli tzw. deklaracja funkcji
+
+     function nazwaCoRobiFunkcja () {
+     console.log("Zrób coś");
+     }
+
+     -------------------------------------------------------------
+
+     tak wygląda rozwlekły zapis funkcji, czyli tzw. wyrażenie = ang. expression
+
+     var nazwaCoRobiFunkcja = function () {
+     console.log("Zrób coś");
+     }
+
+     W wersji rozwlekłej jawnie podajemy nazwę zmiennej, a następnie przypisujemy zmiennej funkcję, dlatego nazwa funkcji = nazwaCoRobiFunkcja, pojawia się przed słowem kluczowym function.
+
+     W wersji skrótowej słowo kluczowe function pojawia się jako pierwsze i od razu nadajemy nazwę = nazwaCoRobiFunkcja, a zmienna o podanej nazwie jest tworzona przez silnik JS niejawnie.
+
+     */
+
+    // +++++++++++++++++++++++++++++++++  TWORZENIE I WYWOŁYWANIE FUNKCJI  ++++++++++++++++++++++++++++++++++++
+
+    var naszaPierwszaFunkcja = function () {
+        console.log("Hello everybody!");
+    }
+
+    // kod ten stworzył nową funkcję i zapisał ją w zmiennej naszaPierwszaFunkcja
+
+    naszaPierwszaFunkcja();
+
+    /* żeby wykonać kod znajdujący się w funkcji (czyli jej treść), wywołaliśmy funkcję (ang. call) poprzez podanie jej nazwy wraz z parą nawiasów
+
+     wywołanie funkcji w przeglądarce powoduje:
+     - wykonanie treści funkcji, którą w tym wypadku jest console.log("Hello everybody!"),
+     - wyświetlenie wyniku wykonania funkcji, czyli w tym wypadku - tekstu Hello everybody!
+     - zwrot w postaci undefined - ten zwrot nazywamy wartością zwracaną (ang. return value), a jest to generowana przez funkcję wartość, której można później użyć w innym miejscu kodu.
+     W tym przypadku jest ona undefined, ponieważ w treści funkcji nie kazaliśmy zwracać żadnej konkretnej wartości, a jedynie chcieliśmy wyświetlić komunikat w konsoli, a to nie to samo, co zwrócenie wartości.
+     O ile w treści funkcji nie ma żadnej instrukcji nakazyjącej zwrócić inną wartość, funkcja zawsze zwraca undefined
+     */
+
+    // +++++++++++++++++++++++++++++++++++  PRZESYŁANIE ARGUMENTÓW DO FUNKCJI  +++++++++++++++++++++++++++++++++++
+
+    /*
+     to jest składnia funkcji z jednym argumentem:
+
+     function ( argument ) {
+     console.log("Mój argument to: " + argument);
+     }
+
+     - dzięki argumentom możemy przesyłać wartości do funkcji, zmieniając w ten sposób jej zachowanie;
+     - argumenty zawsze podajemy w nawiasach () po nazwie funkcji, zarówno przy tworzeniu funkcji, jak i przy wywoływaniu;
+     - aby wywołać funkcję, która przyjmuje argument, w nawiasach zaraz za nazwą funkcji umieszczamy wartość, której chcemy użyć jako argumentu
+
+     */
+
+    // funkcja z argumentem imie
+
+    var powiedzCzesc = function (imie) {
+        console.log("Cześć " + imie + "!");
+    }
+
+    /*
+     - stworzyliśmy funkcję i przypisaliśmy ją do zmiennej powiedzCzesc;
+     - gdy wywołujemy funkcję, wyświetla ona łańcuch "Cześć " + imie + "!";
+     - w miejsce zmiennej imie wstawiane jest to, co prześlemy do funkcji jako argument.
+     */
+
+    powiedzCzesc("Magdo");
+
+    /* po wpisaniu w konsolę dostajemy zwrot:
+     Cześć Magdo!
+     undefined
+     */
+
+    // ----------------------------  PRZYKŁAD RYSOWANIE KOCICH PYSZCZKÓW
+
+    /*
+     - argument do funkcji można przesłać po to, aby określić, ile razy należy coś zrobić;
+     - function rysujKoty wyświetla w konsoli kocie pyszczki ( =^.^= );
+     - argument ileRazy mówi funkcji, ile kotów ma wyświetlić.
+     */
+
+    var rysujKoty = function (ileRazy) {
+        for (var i = 0; i < ileRazy; i++) {
+            console.log(i + " =^.^=");
+        }
+    };
+
+    // teraz wywołujemy funkcję rysujKoty określając jej argument na np. 5
+
+    rysujKoty(5);
+
+    /*
+     po wywołaniu ww. funkcji w konsoli otrzymujemy następujący wynik:
+     0 =^.^=
+     1 =^.^=
+     2 =^.^=
+     3 =^.^=
+     4 =^.^=
+     undefined
+     */
+
+    //  ++++++++++++++++++++++++++++++++++  PRZESYŁANIE DO FUNKCJI WIELU ARGUMENTÓW  ++++++++++++++++++++++++
+
+    /*
+     Używając wielu argumentów, możemy przesłać do funkcji więcej niż jedną wartość.
+     W tym celu, po słowie kluczowym function wymieniamy w nawiasie argumenty oddzielone przecinkami
+
+     function nazwaCoRobi (argument1, argument2) {
+     console.log("Mój pierwszy argument to: " + argument1);
+     console.log("Mój drugi argument to: " + argument2);
+     }
+     */
+
+    var rysujWieleRazy = function (ileRazy, coRysowac) {
+        for (var i = 0; i <= ileRazy; i++) {
+            console.log(i + " " + coRysowac);
+        }
+    };
+
+    // propozycje coRysowac:  ^V^  <^|^>  o^|^o  o^_^o  =^.^=  ^u^  ^_^  >_<
+
+    rysujWieleRazy(5, "o^_^o");
+    rysujWieleRazy(3, ">_<");
+    rysujWieleRazy(6, "<^|^>");
+    rysujWieleRazy(4, '("v")');
+
+    // w ten sposób wywołujemy funkcję rysujWieleRazy z różnymi argumentami (ileRazy, coRysowac)
+
+    // ++++++++++++++++++++++++++++++++++++  ZWRACANIE WARTOŚCI Z FUNKCJI  +++++++++++++++++++++++++++++++++++
+
+    /*
+     Metoda console.log to łatwy i przydatny sposób wyświetlania wartości przez JavaScript, ale otrzymanej wartości nie możemy później użyć w programie.
+
+     Co zrobić więc, aby funkcja generowała wartość w taki sposób, aby można jej było używać w innych miejscach kodu?
+
+     Potrzebna do tego jest wartość zwracana:
+
+     - gdy wywołujemy funkcję, która zwraca wartość, możemy używać tej wartości w innych częściach kodu np.
+     1) możemy zapisać zwróconą wartość w zmiennej,
+     2) możemy pzesłać zwróconą wartość do innej funkcji,
+     3) możemy połączyć zwróconą wartość z innym kodem.
+
+     - aby zwrócić wartość z funkcji, używamy słowa kluczowego return, a po nim podajemy wartość, którą chcemy zwracać
+     */
+
+    var podwajaj = function (liczba) {
+        return liczba * 2;
+    };
+    // wywołujemy
+    podwajaj(5)
+    // wartość zwracana -> 10
+
+    /*
+     mimo że funkcje mogą przyjmować wiele argumentów, to zwracać mogą tylko jedną wartość;
+     jeśli nie nakażemy funkcji, aby coś zwracała, będzie zwracać undefined
+     */
+
+    // +++++++++++++++++++++  UŻYWANIE WYWOŁANIA FUNKCJI JAKO WARTOŚCI +++++++++++++++++++++++++++++++++++++
+
+    /*
+     Gdy wywołujemy funkcję z większego fragmentu kodu, wartość zwracana jest używana tam, gdzie wywołanie zostało umieszczone.
+
+     np. podwajaj(5) + podwajaj(6) -> 22
+
+     Wywołanie funkcji można też przesłać jako argument do innej funkcji - w tej sytuacji w miejsce wywołania zostanie podstawiona wartość zwracana.
+
+     np. podwajaj(podwajaj(3)); -> 12
+     najpierw JS obliczy podwajaj(3) -> 6, a następnie podwajaj(6) -> 12
+     */
+
+    // ++++++++++++++++++++++  UPRASZCZANIE KODU ZA POMOCĄ FUNKCJI  ++++++++++++++++++++++++++++++++++++
+
+    /* Zadanie1.
+     Napisz generator losowych zniewag.
+     */
+
+    var CzesciCiala = ["Twarz", "Noga", "Ręka", "Stopa"];
+    var Przymiotniki = ["Cuchnąca", "Brudna", "Paskudna", "Owrzodziała"];
+    var Porownania = ["Mucha", "Kuna", "Glista", "Ropucha", "Salamandra"];
+
+    function wybierzLosoweSlowo(tablica) {
+        var tablica;
+        var i;
+        var slowo;
+        i = Math.floor(Math.random() * tablica.length);
+        slowo = tablica[i]
+        return slowo
+    }
+
+    function generujLosowaZniewage(tab1, tab2, tab3) {
+
+        var tab1, tab2, tab3
+
+        // połącz wszystkie losowe łańcuchy w zdanie
+        var losoweWyzwisko = "Twoja " + wybierzLosoweSlowo(tab1) + " jest jak " + wybierzLosoweSlowo(tab2) + " " + wybierzLosoweSlowo(tab3) + "!!!";
+
+        return losoweWyzwisko;
+    }
+
+
+   /*
+    var CzesciCiala = ["Twarz", "Noga", "Ręka", "Stopa"];
+    var Przymiotniki = ["Cuchnąca", "Brudna", "Paskudna", "Owrzodziała"];
+    var Porownania = ["Mucha", "Kuna", "Glista", "Ropucha", "Salamandra"];
+*/
+
+    document.write(generujLosowaZniewage(CzesciCiala, Przymiotniki, Porownania));
+
+
+</script>
+
+</body>
+</html>
