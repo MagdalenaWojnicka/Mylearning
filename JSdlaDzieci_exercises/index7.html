@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>LOOPS</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<script>
+    /* Pętle pozwalają nam wykonać fragment kodu wielokrotnie, zależnie od tego, czy warunek pozostaje prawdziwy;
+
+     np. jeśli na talerzu jest jedzenie, należy kontynuować jedzenie,
+     np. jeśli na twarzy jest brud, należy kontynuować mycie twarzy
+     */
+
+    // =========================================  PĘTLE WHILE ========================================
+
+    /* pętla while:
+     - jej treść wykonywana jest wielokrotnie tak długo, jak określony warunek jest zgodny z prawdą
+     - pisząc ją mówimy programowi: "Nie przestawaj tego robić, jeśli ren warunek jest prawdziwy. Gdy warunek stanie się fałszywy, to przestań to robić"
+     - zaczynają się od słowa kluczowego while
+     - po nim w nawiasie () znajduje się warunek,
+     - a dalej w klamrach {} treść, czyli kod, który będzie wykonywany tak długo, jak długo warunek pozostaje prawdziwy
+     - UWAGA! coś tu powinno się zmieniać, aby warynek kiedyś przestał być prawdziwy !!!
+     - podobnie jak w przypadku instrukcji if, treść pętli while jest wykonywana wtedy, gdy warunek jest prawdziwy
+     - inaczej niż w instrukcji if, po wykonaniu treści warunekjest wykonywany ponownie i cykl jest powtarzany do chwili, gdy warunek stanie się fałszywy
+     */
+
+    /*
+     ogólna struktura pętli:
+
+     while (warunek) {
+     console.log("Zrób coś");
+     i++;
+     }
+     */
+
+    // ++++++++++++++++++++++++ PRZYKŁAD - LICZENIE OWIEC W PĘTLI WHILE
+
+    var policzoneOwce = 0;
+    while (policzoneOwce < 10) {
+        console.log("Owca numer " + policzoneOwce + " już policzona!");
+        policzoneOwce++;
+    }
+    console.log("Chrrrrrrrr");
+
+    /* Co po kolei robimy:
+     - tworzymy zmienną o nazwie policzoneOwce i ustawiamy jej wartość na 0,
+     - gdy dotrzemy do pętli while, sprawdzamy, czy zmienna policzoneOwce ma wartość mniejszą od 0, czyli jest true,
+     - jako że odpowiedź jest true, tak więc wykonywany jest kod w klamrach, czyli treść pętli,
+     - i instrukcja jest wyświetlana w konsoli jako "Owca numer 0 już policzona",
+     - następnie policzoneOwce++ zwiększa wartość zmiennej policzoneOwce o 1 i w ten sposób powracamy wielokrotnie na początek pętli,
+     - powtarza się to aż do momentu, gdy zmienna policzoneOwce osiągnie wartość 10 i warunek while stanie się false,
+     - wówczas program przechodzi do tego, co znajduje się po pętli, czyli wyświetlenia Chrrrrrr
+     */
+
+    /* UWAGA!!!
+     Używając pętli trzeba pamiętać, że jeżeli ustawiony warunek nigdy nie stanie się false, to pętla będzie się wykonywać w nieskończoność, ponieważ nie będzie niczego, co by zatrzymało program.
+     Nazywamy to pętlą nieskończoną = ang. infinite loop
+     */
+
+    // ==================================  PĘTLE FOR ====================================
+    /*
+     W pętlach typu for:
+     - utworzona na początku zmienna jest aktualizowana po każdym wykonaniu pętli,
+     - a sama pętla wykonywana jest dopóty, dopóki warunek pozostaje prawdziwy;
+     - konfiguracja zmiennej, zdefiniowanie warunku i określenie, w jaki sposób zmienna powinna się zmieniać po każdym cyklu  wszystko to trzeba wykonać jeszcze przed przejściem do treści pętli.
+     */
+
+    // ++++++++++++++++++++++++++  PRZYKŁAD - LICZENIE OWIEC W PĘTLI FOR
+
+    for (var policzoneOwce = 0; policzoneOwce < 10; policzoneOwce++) {
+        console.log("Owca numer " + policzoneOwce + " już policzona!");
+    }
+    console.log("Chrrrrrrr");
+
+    /*
+     pętla for składa się z trzech części oddzielonych od siebie średnikami:
+     - inicjalizacji licznika (var policzoneOwce = 0;) - czyli inicjalizacja zmiennej;
+     - warunku (policzoneOwce < 10;) - który ma wartość true or false;
+     - aktualizacji licznika (policzoneOwce++) - czyli określenia, co należy wykonać za każdym powtórzeniem pętli;
+     - licznik - generalnie odpowiada za liczbę wykonań pętli i może startować od 0 lub innej, zadanej liczby;
+     - warunek - jest sprawdzany przed każdym wykonaniem treści pętli i
+                 jeśli jest prawdziwy, to treść jest wykonywana, a
+                 jeśli jest fałszywy, to pętla się zatrzymuje;
+     - po każdym wykonaniu treści pętli ma miejsce aktualizacja wartości zmiennej pętli (policzoneOwce++ tu np. wykonujemy inkrementację);
+     */
+
+    // +++++++++++++++++++++  PRZYKŁAD - PROGRAM MÓWI "CZEŚĆ!" OKREŚLONĄ ILOŚĆ RAZY
+
+    /*
+    pętli for często używa się do wykonania jakiegoś kodu określoną liczbę razy
+    Zadanie 1:
+    Napisz program, który 5 razy powie Cześć!
+     */
+    var ileRazyPowiedziecCzesc = 5;
+    for (var i = 0; i < ileRazyPowiedziecCzesc; i++) {
+        console.log("Cześć!");
+    }
+
+    // wariacja na temat poprzedniego zadania
+
+    var ileRazyPowiedziecCzesc = 5;
+    for (var i = 0; i <= ileRazyPowiedziecCzesc; i++) {
+        console.log("Cześć! po raz " + i + ".");
+    }
+
+    // +++++++++++++++++++++++  UŻYWANIE PĘTLI FOR Z TABLICAMI
+
+    /*
+    pętli for często używa się do wykonania jakiegoś działania z każdym elementem tablicy albo każdym znakiem łańcucha
+    Zadanie 2:
+    Napisz program wyświetlający kosmetyki znajdujące się w Twojej szufladzie
+     */
+
+    var kosmetykiWSzufladzie = ["lakiery do paznokci", "szminki", "błyszczyki", "konturówki", "cienie do powiek", "tusze do rzęs", "podkłady", "pudry", "dezodoranty", "perfumy"];
+    for ( var i = 0; i < kosmetykiWSzufladzie.length; i++ ) {
+        console.log("W mojej szufladzie z kosmetykami znajdują się " + kosmetykiWSzufladzie[i] + ".");
+    }
+
+    /*
+    podsumowanie zadania:
+    - w tej pętli zmienna i początkowo ma wartość 0 i rośnie aż do wartości o 1 mniejszej niż kosmetykiWSzufladzie.lenght;
+    - kolejne liczby od 0 do 9 są indexami kosmetyków w tablicy;
+    - oznacza to, że za każdym przebiegiem pętli wartością zmiennej i jest inny index tablicy;
+    - a kosmetykiWSzufladzie[i] to po prostu wywołanie elementu z tablicy o indexie równym aktualanemu i.
+
+
+     // +++++++++++++++++++++++  UŻYWANIE PĘTLI FOR Z ŁAŃCUCHAMI ZNAKÓW
+
+    UWAGA!
+    o tym już wcześniej było, ale tu przypominamy sobie, że:
+    - dostęp do poszczególnych znaków w łańcuchu znaków można uzyskać tak samo, jak do indexów tablicy, czyli za pomocą [] nawiasów kwadratowych
+
+    Zadanie 3:
+    Wydrukuj litery zawarte w imieniu
+     */
+
+    var mojeImie = "Magdalena";
+    for ( i = 0; i < mojeImie.length; i++) {
+        console.log("Moje imię zawiera literę " + mojeImie[i] + ".");
+    }
+
+    // +++++++++++++++++++++++  INNE SPOSOBY UŻYWANIA PĘTLI FOR
+
+    /*
+    licznik pętli nie zawsze musi mieć na początku wartość i = 0 i nie zawsze musimy zwiększać go o 1 przez inkrementację
+
+    Zadanie 4:
+    Napisz program wyświetlający wszystkie potęgi liczby 2 mniejsze od 10.000
+     */
+
+    for (i = 2; i < 10000; i = i * 2) {
+        console.log(i);
+    }
+
+    /*
+    Zadanie 5:
+    Napisz program wyświetlający wszystkie liczby parzyste od 0 do 100
+     */
+
+    for (i = 0; i < 50; i++) {
+        console.log(i * 2);
+    }
+
+    // a to drugi sposób rozwiązania
+
+    for (i = 0; i < 100; i +=2) {
+        console.log(i);
+    }
+
+    /*
+    Zadanie 6:
+    Napisz program wyświetlający wszystkie liczby nieparzyste od 0 do 100
+     */
+
+    for (i = 1; i < 100; i += 2) {
+        console.log(i)
+    }
+
+    /*
+    Zadanie 7:
+    Napisz program wyświetlający potęgi liczby 3 mniejsze niż 1.000
+     */
+
+    for (i = 3; i < 1000; i = i * 3) {
+        console.log(i);
+    }
+
+    /* Zadanie 8:
+    Napisz to samo, co wyżej, ale przy pomocy pętli while
+     */
+
+    var potegiLiczbyTrzy = 3;
+    while (potegiLiczbyTrzy < 10000) {
+        console.log(potegiLiczbyTrzy *= 3);
+    }
+
+</script>
+
+</body>
+</html>
