@@ -14,6 +14,292 @@
 </head>
 <body>
 <script>
+    /*
+     Obiekty w JavaScript są bardzo podobne do tablic, ale działania na różnych elementach wykonujemy nie za pomocą liczb, lecz za pomocą łańcuchów znaków.
+     - łańcuchy nazywane są kluczami (ang. keys) lub wartościami (ang. properties);
+     - eementy wskazywane przez klucze są nazywane wartościami;
+     - każda taka informacja nazywana jest parą klucz-wartość;
+
+     - tablice wykorzystuje się do tworzenia list zawierających wiele elementów;
+     - obiekty używane są do reprezentowania pojedynczych elementów z wieloma cechami - tzw. atrybutami;
+     */
+
+    //////////////////////////////////  TWORZENIE OBIEKTÓW ///////////////////////////////////////////
+
+    // tworzymy obiekt, który przechowuje informacje na temat Męża
+
+    var husband = {
+        "age": 42,
+        "height": 185,
+        "name": "Kuba",
+        "appearance": "handsome",
+        "sex": "man",
+        "hair": false
+    }
+    /*
+     - utworzyliśmy zmienną husband,
+     - przypisane jest jej 6 par klucz-wartość,
+     - całość zawarta jest w nawiasach klamrowych,
+     - nawiasy klamrowe i wszystko, co jest między nimi nazywamy literałem obiektowym (ang. object literal),
+     - literał obiektowy - to sposób tworzenia obiektu poprzez jednorazowe zapisanie go w całości
+     */
+
+    /* UWAGA! - RÓŻNE LITERAŁY
+
+     - literał tablicowy ["a", "b", "c"]
+     - literał liczbowy np. 42
+     - literał znakowy np. "handsome"
+     - literał logiczny true / false
+     - literał - to cała wartość zapisana w jednym, a nie w wielu krokach (literalnie, czyli dosłownie)
+     - nie zawsze z góry wiadomo, co znajdzie się w tablicy albo obiekcie i dlatego nie zawsze można je tworzyć za pomocą literałów
+     */
+
+    /* PODSTAWOWA SKŁADNIA TWORZENIA OBIEKTU
+
+     { "klucz1": 99}
+     - "klucz1" - to klucz, który zawsze jest łańcuchem znaków
+     - 99 - to wartość, która może być dowolnego typu
+     - : - dwukropek pełni tu rolę znaku równości i dzięki niemu podane po prawej stronie wartości zostają przypisane do nazwy znajdującej się po lewej stronie
+     - wszystkie pary klucz: wartość oddzielamy przecinkami
+     - nie trzeba stawiać przecinka po ostatniej parze klucz-wartość - zamiast przecinka wpisujemy klamrę zamykającą
+     - nie ma też potrzeby wpisywania kluczy w cudzysłowie
+     - jeśli nie używamy cudzysłowu, to w kluczu nie można użyć spacji
+     - jeśli w kluczu użyjemy spacji, to musimy też mieć cudzysłów
+     - cały obiekt możemy zadeklarować w jednym wierszu, ale to może utrudniać czytanie
+     */
+
+
+    //////////////////////////////////// WARTOŚCI W OBIEKCIE //////////////////////////////////////
+
+    /*
+     WYBIERANIE WARTOŚCI W OBIEKCIE
+
+     - dostęp do wartości w obiekcie, tak jak w przypadku tablic, uzyskujemy za pomocą nawiasów kwadratowych
+     - zamiast indeksu [liczby] używamy tu klucza [łańcucha znaków] - np. husband ["age"]
+     - użycie cudzysłowu jest opcjonalne tak samo jak przy tworzeniu obiektu
+     - jeśli jednak nie używamy cudzysłowu, to zapis wybierania wartości w obiekcie wygląda tak: husband.age
+     - jest to tzw. notacja kropkowa (ang. dot notation)
+     - notacji kropkowej możemy używać tylko wówczas, gdy klucz nie zwiera spacji
+     - chcąc otrzymać listę wszystkich kluczy w obiekcie, używamy metody Object.keys()
+     - metoda Object.keys(dowolnyObiekt) zwraca tablicę zawierającą wszystkie klucze obiektu dowolnyObiekt
+     */
+
+    husband["appearance"] - > "handsome"
+    husband.height - > 185
+    Object.keys(husband) - > (6) ["age", "height", "name", "appearance", "sex", "hair"]
+
+    /*
+     DODAWANIE WARTOŚCI DO OBIEKTU
+
+     - pusty obiekt jest jak pusta tablica, ale zamiast [] używa {}
+     - dodawanie elementów do obiektów też jest podobne do dodawania elementów do tablic:
+     */
+
+    var sonFilip = {};
+    sonFilip[age] = 13;
+    sonFilip[height] = 171;
+    sonFilip[hair] = "short";
+    sonFilip[hobby] = "illusion";
+    sonFilip[goodInMaths] = true;
+    sonFilip; // -> Object {age: 13, height: 171, hair: "short", hobby: "illusion", goodInMaths: true}
+
+    /* UWAGA!
+     - każda przeglądarka wyświetla zawartość obiektu na swój sposób, czyli w dowolnej kolejności
+     - ponieważ klucze w obiektach nie mają żadnej określonej kolejności !!! - nie to co w tablicach
+     - zawartość tablic jest uporządkowana i każdy element ma swój index,
+     - nie ma żadnych oczywistych zasad regulujących kolejność elementów w obiekcie
+     - !!! z tego powodu nigdy nie należy pisać programów opierających się na ściśle określonej kolejności kluczy obiektów
+     - notacji kropkowej możemy również użyć dodając nowe klucze do obiektu:
+     */
+
+    sonFilip.isFast = true;
+    sonFilip.favouriteColor = "red";
+    sonFilip.build = "slim";
+    sonFilip; // -> Object {age: 13, build: "slim", favouriteColor: "red", goodInMaths: true, hair: "short", height: 171, hobby: "illusion", isFast: true}
+
+    // jeśli zapytamy o właściwość, o której JS nic nie wie, np. sonFilip.likesSwimming; -> undefined
+
+    ///////////////////////////////////  ŁACZENIE TABLIC Z OBIEKTAMI  /////////////////////////////////////
+
+    /*
+     - wartością w obiekcie (albo tablicy) może być inny obiekt (albo inna tablica)
+     - chcąc wywołać jakąś konkretną pozycję z takiego złożonego obiektu lub tablicy stosujemy takie same zasady, jak w pojedynczych obiektach, czy tablicach
+     - z tablic wywołujemy poszczególne elementy przy pomocy [index]
+     - z obiektu wywołujemy elementy przy pomocy [klucz] lub .klucz
+     */
+
+    // Przykład: tablica z synami :)
+
+    var Filip = {
+        name: "Filip",
+        age: 13,
+        hobby: ["illusion", "Rubik's Cube", "Maths", "scouting"]
+    };
+    console.log(Filip);
+
+    var Karol = {
+        name: "Karol",
+        age: 11,
+        hobby: ["swimming", "playing games", "Science", "scouting"]
+    };
+    console.log(Karol);
+
+    var Julek = {
+        name: "Julian",
+        age: 6,
+        hobby: ["playing with kids", "jumping", "watching films"]
+    };
+    console.log(Julek);
+
+    /*
+     utworzyłam trzy zmienne (Filip, Karol, Julek) zawierajace obiekty
+     teraz utworzę zmienną sons, zawierającą tablicę z tymi obiektami
+     */
+
+    var sons = [Filip, Karol, Julek];
+    console.log(sons);
+
+    // każdy z obiektów mogę wybrać z tablicy przy pomocy indexu:
+
+    sons[1]; // -> Object {name: "Karol", age: 11, hobby: Array(4)}
+    sons[0]; // -> Object {name: "Filip", age: 13, hobby: Array(4)}
+    sons[2]; // -> Object {name: "Julian", age: 6, hobby: Array(3)}
+
+    // każdą wartość obiektu można wybrać podając w [index] tablicy oraz .klucz obiektu:
+
+    sons[1].hobby; // -> Object {name: "Julian", age: 6, hobby: Array(3)}
+    sons[2].age; // -> 6
+    sons[0].name; // -> "Filip"
+
+    // można też dotrzeć do poszczególnych elementów w tablicach zawartych w obiektach:
+
+    sons[2].hobby[2]; // -> "watching films"
+    sosn[1].hobby[1]; // -> "playing games"
+    sons[0].hobby[0]; // -> "illusion"
+
+    //////////////////////////  PRZYKŁAD: ŚLEDZENIE NALEŻNYCH PIENIĘDZY  ///////////////////////////
+
+    /*
+     tworzę obiekt pusty, w którym będą zapisywane osoby i kwoty pieniędzy, które są im pożyczane,
+     do obiektu stopniowo wpisuję: imię (klucz) i kwotę pożyczonych pieniędzy (wartość)
+     */
+    var dueMoney = {};
+    dueMoney["Jack"] = 5;
+    dueMoney["Prot"] = 8;
+    dueMoney["Moly"] = 6;
+
+    dueMoney; // -> Object {Jack: 5, Prot: 8, Moly: 6}
+
+    /*
+     gdy któraś z osób odda lub pożyczy kolejne pieniądze, to odnotowuję to przy pomocy operatorów arytmetycznych:
+     */
+    dueMoney["Jack"] += 3;
+    dueMoney["Prot"] -= 2;
+    dueMoney["Moly"] += 2;
+
+    dueMoney; // -> Object {Jack: 8, Prot: 6, Moly: 8}
+
+    /////////////////////////////  PRZYKŁAD: ZAPISYWANIE INFORMACJI O KSIĄŻKACH ///////////////////////
+
+    /*
+     - aby skatalogować kolekcję filmów, czy książek można wykorzystać obiekty
+     - każdy tytuł książki to osobny klucz,
+     - każda wartość przypisana do tego klucza, to osobny obiekt, zawierający informacje o książce
+     - oznacza to, że wartości w obiekcie mogą być obiektami :) !!!
+     */
+
+    var booksIT = {
+        "JavaScript dla dzieci": {
+            author: "Nick Morgan",
+            publisher: "PWN",
+            editionYear: 2015,
+            pages: 318
+        },
+        "HTML5 tworzenie gier": {
+            author: "Karl Bunyan",
+            publisher: "Helion",
+            editionYear: 2016,
+            pages: 208
+        },
+        "Linux wprowadzenie do wiersza polecen": {
+            author: "William E. Shotts Jr",
+            publisher: "Helion",
+            editionYear: 2015,
+            pages: 512
+        },
+        "Git leksykon kieszonkowy": {
+            author: "Richard E. Silverman",
+            publisher: "Helion",
+            editionYear: 2013,
+            pages: 208
+        },
+        "GitHub przyjazny przewodnik": {
+            author: "Peter Bell, Brent Beer",
+            publisher: "Helion",
+            editionYear: 2015,
+            pages: 132
+        },
+        "React w dzialaniu": {
+            author: "Stoyan Stefanov",
+            publisher: "Helion",
+            editionYear: 2016,
+            pages: 238
+        }
+    }
+    // wyszukujemy potrzebne informacje o książce:
+
+    booksIT["GitHub przyjazny przewodnik"]; // -> Object {author: "Peter Bell, Brent Beer", publisher: "Helion", editionYear: 2015, pages: 132}
+    booksIT["HTML5 tworzenie gier"].author; // -> "Karl Bunyan"
+    booksIT["React w dzialaniu"].editionYear; // -> 2016
+
+    // możemy też w każdej chwili dorzucić coś do naszego obiektu z książkami:
+
+    booksIT["Nowoczesne aplikacje internetowe"] = {
+        author: "Jeff Dickey",
+        publisher: "Helion",
+        editionYear: 2016,
+        pages: 244
+    };
+
+    // możemy w każdej chwili sprawdzić i wyświetlić zawartość naszego obiektu z książkami, czyniąc to na dwa sposoby:
+
+    booksIT; // -> Object {JavaScript dla dzieci: Object, HTML5 tworzenie gier: Object, Linux wprowadzenie do wiersza polecen: Object, Git leksykon kieszonkowy: Object, GitHub przyjazny przewodnik: Object…}
+
+    Object.keys(booksIT); // -> (7) ["JavaScript dla dzieci", "HTML5 tworzenie gier", "Linux wprowadzenie do wiersza polecen", "Git leksykon kieszonkowy", "GitHub przyjazny przewodnik", "React w dzialaniu", "Nowoczesne aplikacje internetowe"]
+
+
+    ///////////////////////////  ĆWICZENIA DLA AMBITNYCH  /////////////////////////////
+
+    // TABLICA WYNIKÓW
+
+    var results = {};
+    results["Filip"] = 0;
+    results["Karol"] = 0;
+    results["Julian"] = 0;
+    results["Magdalena"] = 0;
+    results["Jakub"] = 0;
+
+    results; // ->   Object {Filip: 0, Karol: 0, Julian: 0, Magdalena: 0, Jakub: 0} to jest obiekt startowy
+
+    results.Filip += 2;
+    results.Julian += 6;
+    results.Karol += 3;
+    results.Jakub += 1;
+    results.Magdalena -= 4;
+
+    results; // -> Object {Filip: 2, Karol: 3, Julian: 6, Magdalena: -4, Jakub: 1} to jest wynik po pierwszej rundzie
+
+    // EKSPLOROWANIE OBIEKTÓW
+
+    var myObject = {
+        name: "Strange object",
+        anyArray: [7, 9, {cel:"misunderstanding", number: 123}, 3.3],
+        randomAnimal: "barracuda"
+    };
+
+    // w jaki sposób można wyodrębnić z tego obiektu liczbę 123, używając tylko 1 linijki kodu?
+
+    myObject.anyArray[2].number; // -> 123
 
 
 </script>
